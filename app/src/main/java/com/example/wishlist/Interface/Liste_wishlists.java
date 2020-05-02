@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-import com.example.coo_groupe_l3_2.R;
+import com.example.wishlist.R;
 
 public class Liste_wishlists extends AppCompatActivity {
 

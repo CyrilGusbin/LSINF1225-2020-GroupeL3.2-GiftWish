@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.coo_groupe_l3_2.Interface.Liste_wishlists">
+    tools:context="com.example.wishlist.Interface.Liste_wishlists">
 
     <Button
         android:id="@+id/button8"

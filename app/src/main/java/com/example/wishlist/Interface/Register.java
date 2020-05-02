@@ -9,7 +9,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.wishlist.Backend.USER;
-import com.example.coo_groupe_l3_2.R;
+import com.example.wishlist.R;
 import com.example.wishlist.DAO.UserDAO;
 
 import static android.provider.AlarmClock.EXTRA_MESSAGE;

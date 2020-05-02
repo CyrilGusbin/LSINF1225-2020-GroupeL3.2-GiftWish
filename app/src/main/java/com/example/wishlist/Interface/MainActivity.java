@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.wishlist.Backend.USER;
 import com.example.wishlist.DAO.UserDAO;
-import com.example.coo_groupe_l3_2.R;
+import com.example.wishlist.R;
 
 import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
