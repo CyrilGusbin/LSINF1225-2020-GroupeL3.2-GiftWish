@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Wishlist</string>
+    <string name="pseudo_connexion">Pseudo</string>
+    <string name="mdp_connexion">Password</string>
+    <string name="Pseudo_register">Pseudo</string>
+    <string name="Password_register">Password</string>
 </resources>
