@@ -1,5 +1,3 @@
-//Ceci est l'interface du profil.
-
 package com.example.wishlist.Interface;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,11 +6,11 @@ import android.os.Bundle;
 
 import com.example.wishlist.R;
 
-public class Liste_wishlists extends AppCompatActivity {
+public class WishLists extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_liste_wishlists);
+        setContentView(R.layout.activity_wish_lists);
     }
 }

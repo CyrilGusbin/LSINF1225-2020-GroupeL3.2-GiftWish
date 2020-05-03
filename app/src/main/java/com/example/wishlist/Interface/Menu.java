@@ -26,9 +26,9 @@ public class Menu extends AppCompatActivity {
         play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent otherActivity = new Intent(getApplicationContext(), Liste_wishlists.class);
+                Intent otherActivity = new Intent(getApplicationContext(), WishLists.class);
                 startActivity(otherActivity);
-            }
+             }
         });
 
         //Lorsque l'on clique sur le bouton "Mes amis", l'application nous déplace vers l'interface "Mes amis".
