@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -19,12 +20,26 @@ import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
 
 public class MainActivity extends AppCompatActivity {
+
+    private Button play;
     private final AppCompatActivity activity = MainActivity.this;
     UserDAO userDao;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        this.play = findViewById(R.id.inscription2);
+
+        play.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent otherActivity = new Intent(getApplicationContext(), Register.class);
+                startActivity(otherActivity);
+                finish();
+            }
+        });
         Intent intent= getIntent();
         String message = intent.getStringExtra(EXTRA_MESSAGE);
         TextView textView = findViewById(R.id.error);

@@ -70,17 +70,16 @@
         android:ems="10"
         android:hint="@string/Password_register"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintBottom_toTopOf="@+id/continuer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView6"
         app:layout_constraintTop_toBottomOf="@+id/MDP" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/continuer"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginTop="100dp"
-        android:onClick="CreateUser"
         android:text="Confirmer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -95,5 +94,5 @@
         android:text=""
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintTop_toBottomOf="@+id/continuer" />
 </androidx.constraintlayout.widget.ConstraintLayout>

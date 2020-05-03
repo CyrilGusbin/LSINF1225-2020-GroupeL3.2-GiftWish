@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -15,18 +16,34 @@ import com.example.wishlist.DAO.UserDAO;
 import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
 public class Register extends AppCompatActivity {
+
+    private Button play;
     private final AppCompatActivity activity = Register.this;
     UserDAO userDao;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        this.play = findViewById(R.id.continuer);
+
+        play.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent otherActivity = new Intent(getApplicationContext(), Menu.class);
+                startActivity(otherActivity);
+                finish();
+            }
+        });
         Intent intent= getIntent();
         String message = intent.getStringExtra(EXTRA_MESSAGE);
         TextView textView = findViewById(R.id.error);
         textView.setText(message);
         userDao=new UserDAO(activity);
     }
+
+
     public void CreateUser(View view){
         Intent intent = new Intent(this, MainActivity.class);
         Intent intent2 = new Intent(this, Register.class);
@@ -42,6 +59,5 @@ public class Register extends AppCompatActivity {
             startActivity(intent2);
 
         }
-
-}
+    }
 }
