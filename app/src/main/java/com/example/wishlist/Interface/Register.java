@@ -30,6 +30,7 @@ public class Register extends AppCompatActivity {
         setContentView(R.layout.activity_register);
         this.play = findViewById(R.id.continuer);
 
+       /* C'est ça qui cassait tout
         play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -37,7 +38,7 @@ public class Register extends AppCompatActivity {
                 startActivity(otherActivity);
                 finish();
             }
-        });
+        });*/
         Intent intent= getIntent();
         String message = intent.getStringExtra(EXTRA_MESSAGE);
         TextView textView = findViewById(R.id.error);

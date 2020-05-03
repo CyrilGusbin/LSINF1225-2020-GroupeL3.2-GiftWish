@@ -55,15 +55,15 @@ public class UserDAO {
         ContentValues values = new ContentValues();
         values.put(FeedReaderContract.FeedEntry.COLUMN_USER_PSEUDO, pseudo);
         values.put(FeedReaderContract.FeedEntry.COLUMN_USER_MDP, mdp);
-        try {
-            long newRowId = db.insert(FeedReaderContract.FeedEntry.TABLE_USER, null, values);
-            db.close();
-            return true;
-        }
-        catch(Exception e){
+        long newRowId = db.insertWithOnConflict(FeedReaderContract.FeedEntry.TABLE_USER, null, values, SQLiteDatabase.CONFLICT_IGNORE);
+        if (newRowId==-1){
             db.close();
             return false;
         }
+        db.close();
+        return true;
+
+
 
     }
 }
