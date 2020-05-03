@@ -1,3 +1,6 @@
+//Ceci est l'interface de connexion.
+
+
 package com.example.wishlist.Interface;
 
 import android.content.Intent;
@@ -30,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         this.play = findViewById(R.id.inscription2);
 
         play.setOnClickListener(new View.OnClickListener() {
@@ -40,6 +44,36 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        this.play = findViewById(R.id.connexion);
+
+        play.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent otherActivity = new Intent(getApplicationContext(), Menu.class);
+                Intent resetActivity = new Intent(getApplicationContext(), MainActivity.class);
+
+                USER user = new USER();
+                EditText pseudo = findViewById(R.id.pseudo);
+                EditText mdp = findViewById(R.id.mdp);
+                String pseudo_bis= pseudo.getText().toString();
+                String mdp_bis= mdp.getText().toString();
+                Log.e("mdp", mdp_bis);
+                boolean ret = userDao.CreateFirstUser(user ,pseudo_bis, mdp_bis);
+                Log.e("tentative", "connect");
+                if (ret){
+                    startActivity(otherActivity);
+                    finish();
+                }
+                else{
+                    resetActivity.putExtra(EXTRA_MESSAGE, "Pseudo et/ou mot de passe invalides");
+                    startActivity(resetActivity);
+                    finish();
+                }
+
+            }
+        });
+
         Intent intent= getIntent();
         String message = intent.getStringExtra(EXTRA_MESSAGE);
         TextView textView = findViewById(R.id.error);
@@ -48,29 +82,4 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
-    public void goregister(View view){
-        Intent intent = new Intent(this, Register.class);
-        startActivity(intent);
-    }
-    public void connect(View view){
-        Intent intent2 = new Intent(this, Menu.class);
-        Intent intent = new Intent(this, MainActivity.class);
-        USER user = new USER();
-        EditText pseudo = findViewById(R.id.pseudo);
-        EditText mdp = findViewById(R.id.mdp);
-        String pseudo_bis= pseudo.getText().toString();
-        String mdp_bis= mdp.getText().toString();
-        Log.e("mdp", mdp_bis);
-        boolean ret = userDao.CreateFirstUser(user ,pseudo_bis, mdp_bis);
-        Log.e("tentative", "connect");
-        if (ret){
-            startActivity(intent2);
-        }
-        else{
-            intent.putExtra(EXTRA_MESSAGE, "Pseudo et/ou mot de passe invalides");
-            startActivity(intent);
-        }
-
-    }
 }

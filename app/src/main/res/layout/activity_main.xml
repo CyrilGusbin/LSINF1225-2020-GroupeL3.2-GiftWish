@@ -45,7 +45,6 @@
         android:layout_marginStart="161dp"
         android:layout_marginTop="23dp"
         android:layout_marginEnd="161dp"
-        android:onClick="connect"
         android:text="Connexion"
         app:layout_constraintBottom_toTopOf="@+id/inscription"
         app:layout_constraintEnd_toEndOf="parent"

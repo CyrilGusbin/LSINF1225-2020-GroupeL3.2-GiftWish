@@ -7,31 +7,31 @@
     tools:context="com.example.wishlist.Interface.Menu">
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/wishlist"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:width="@android:dimen/thumbnail_width"
-        android:text="Mes wishlists"
-        app:layout_constraintBottom_toTopOf="@+id/button5"
+        android:text="Mes WishLists"
+        app:layout_constraintBottom_toTopOf="@+id/amis"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/amis"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:width="@android:dimen/thumbnail_width"
         android:text="Mes amis"
-        app:layout_constraintBottom_toTopOf="@+id/button6"
+        app:layout_constraintBottom_toTopOf="@+id/profil"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button4" />
+        app:layout_constraintTop_toBottomOf="@+id/wishlist" />
 
     <Button
-        android:id="@+id/button6"
+        android:id="@+id/profil"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:width="@android:dimen/thumbnail_width"
@@ -40,7 +40,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button5" />
+        app:layout_constraintTop_toBottomOf="@+id/amis" />
 
     <Button
         android:id="@+id/deconnexion"

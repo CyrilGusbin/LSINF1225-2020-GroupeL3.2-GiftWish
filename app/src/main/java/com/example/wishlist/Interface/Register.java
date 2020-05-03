@@ -1,3 +1,5 @@
+//Ceci est l'interface d'inscription.
+
 package com.example.wishlist.Interface;
 
 import androidx.appcompat.app.AppCompatActivity;
