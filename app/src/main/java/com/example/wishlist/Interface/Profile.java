@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import com.example.wishlist.R;
+
 public class Profile extends AppCompatActivity {
 
     @Override
