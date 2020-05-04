@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Wishlist</string>
+    <string name="app_name">GiftWish</string>
     <string name="pseudo_connexion">Pseudo</string>
     <string name="mdp_connexion">Password</string>
     <string name="Pseudo_register">Pseudo</string>
