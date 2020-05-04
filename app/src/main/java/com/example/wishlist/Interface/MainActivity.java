@@ -63,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
                 boolean ret = userDao.CreateFirstUser(user ,pseudo_bis, mdp_bis);
                 Log.e("tentative", "connect");
                 if (ret){
+                    otherActivity.putExtra(EXTRA_MESSAGE, pseudo_bis);
                     startActivity(otherActivity);
                     finish();
                 }

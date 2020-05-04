@@ -11,6 +11,8 @@ import android.widget.Button;
 
 import com.example.wishlist.R;
 
+import static android.provider.AlarmClock.EXTRA_MESSAGE;
+
 public class Menu extends AppCompatActivity {
 
     private Button play;
@@ -49,6 +51,9 @@ public class Menu extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent otherActivity = new Intent(getApplicationContext(), Profile.class);
+                Intent intent = getIntent();
+                String message = intent.getStringExtra(EXTRA_MESSAGE);
+                otherActivity.putExtra(EXTRA_MESSAGE, message);
                 startActivity(otherActivity);
             }
         });
