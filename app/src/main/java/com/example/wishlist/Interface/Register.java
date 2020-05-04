@@ -61,6 +61,7 @@ public class Register extends AppCompatActivity {
         else{
             intent2.putExtra(EXTRA_MESSAGE, "Pseudo déjà utilisé");
             startActivity(intent2);
+            finish();
 
         }
     }

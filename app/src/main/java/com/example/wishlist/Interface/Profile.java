@@ -5,6 +5,7 @@ package com.example.wishlist.Interface;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.example.wishlist.R;
 
