@@ -47,6 +47,7 @@ public class Register extends AppCompatActivity {
     }
 
 
+    //Lorsque l'on décide de créer un compte, si le pseudo entrée se trouve déja dans la base de donnée, celui-ci renvoie une erreur et nous donne une seconde tentative. Sinon, nous accèdons au menu principal.
     public void CreateUser(View view){
         Intent intent = new Intent(this, MainActivity.class);
         Intent intent2 = new Intent(this, Register.class);

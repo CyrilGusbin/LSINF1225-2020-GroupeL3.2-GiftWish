@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //Lorsque l'on clique sur le bouton "S'inscrire", l'application nous déplace vers l'interface d'inscription."
         this.play = findViewById(R.id.inscription2);
 
         play.setOnClickListener(new View.OnClickListener() {
@@ -41,10 +42,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent otherActivity = new Intent(getApplicationContext(), Register.class);
                 startActivity(otherActivity);
-                finish();
             }
         });
 
+        //Lorsque l'on clique une fois nos coordonnées entrées sur le bouton de connexion, si les données entrées sont correctes, l'application nous déplace vers l'interface du menu principal.
         this.play = findViewById(R.id.connexion);
 
         play.setOnClickListener(new View.OnClickListener() {
