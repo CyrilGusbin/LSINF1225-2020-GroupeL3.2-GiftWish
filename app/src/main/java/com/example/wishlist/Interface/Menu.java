@@ -39,6 +39,18 @@ public class Menu extends AppCompatActivity {
              }
         });
 
+        //Lorsque l'on clique sur le bouton "Produits", l'application nous déplace vers l'interface "Produits".
+        //TODO : RENDRE CETTE PARTIE FONCTIONNELLE ET STABLE.
+        this.play = findViewById(R.id.produits);
+
+        play.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent otherActivity = new Intent(getApplicationContext(), Produits.class);
+                startActivity(otherActivity);
+            }
+        });
+
         //Lorsque l'on clique sur le bouton "Mes amis", l'application nous déplace vers l'interface "Mes amis".
         this.play = findViewById(R.id.amis);
 

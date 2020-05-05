@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Interface.WishLists"></activity>
+        <activity android:name=".Interface.Produits"></activity>
+        <activity android:name=".Interface.WishLists" />
         <activity android:name=".Interface.Friends" />
         <activity android:name=".Interface.Profile" />
         <activity android:name=".Interface.Register" />
