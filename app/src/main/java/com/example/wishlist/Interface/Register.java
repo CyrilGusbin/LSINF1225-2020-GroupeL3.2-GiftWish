@@ -56,6 +56,7 @@ public class Register extends AppCompatActivity {
         String pseudo_bis= pseudo.getText().toString();
         String mdp_bis= mdp.getText().toString();
         if(userDao.AddUserDB(pseudo_bis, mdp_bis)){
+            intent.putExtra(EXTRA_MESSAGE, pseudo_bis);
             startActivity(intent);
         }
         else{

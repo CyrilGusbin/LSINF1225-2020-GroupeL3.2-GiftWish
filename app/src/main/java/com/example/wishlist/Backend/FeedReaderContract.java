@@ -64,7 +64,7 @@ public final class FeedReaderContract {
             FeedEntry.COLUMN_PROFIL_NOM + " VARCHAR (20) NOT NULL," +
             FeedEntry.COLUMN_PROFIL_PRENOM + " VARCHAR (20) NOT NULL," +
             FeedEntry.COLUMN_PROFIL_AGE + " VARCHAR (20) NOT NULL," +
-            FeedEntry.COLUMN_PROFIL_ADRESSE +" VARCHAR (100) NOT NULL," +
+            FeedEntry.COLUMN_PROFIL_ADRESSE +" VARCHAR (100)," +
             FeedEntry.COLUMN_PROFIL_PHOTO +" LONGBLOB" +")";
     public static final String SQL_CREATE_ENTRIES3="CREATE TABLE " +  FeedEntry.TABLE_ITEM + "(" +
             FeedEntry.COLUMN_ITEM_ID + " varchar (20) PRIMARY KEY NOT NULL," +

@@ -48,6 +48,7 @@
         android:id="@+id/create_account"
         android:layout_width="165dp"
         android:layout_height="58dp"
+        android:onClick="CreateData"
         android:text="Create my Account"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

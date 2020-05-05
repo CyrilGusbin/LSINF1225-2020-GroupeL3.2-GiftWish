@@ -64,11 +64,21 @@ public class UserDAO {
         return true;
     }
 
-    public void AddDataDB(String name, String firstname, String age){
+    public boolean AddDataDB(String pseudo, String name, String firstname, String age){
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
+        values.put(FeedReaderContract.FeedEntry.COLUMN_PROFIL_PSEUDO, pseudo);
         values.put(FeedReaderContract.FeedEntry.COLUMN_PROFIL_NOM, name);
         values.put(FeedReaderContract.FeedEntry.COLUMN_PROFIL_PRENOM, firstname);
         values.put(FeedReaderContract.FeedEntry.COLUMN_PROFIL_AGE, age);
+        long newRowId = db.insert(FeedReaderContract.FeedEntry.TABLE_PROFIL, null, values);
+        if (newRowId==-1){
+            db.close();
+            Log.e("Création profil", "failed");
+            return false;
+        }
+        db.close();
+        Log.e("Création profil", "suceed");
+        return true;
     }
 }
