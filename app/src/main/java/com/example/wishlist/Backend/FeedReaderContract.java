@@ -97,6 +97,19 @@ public final class FeedReaderContract {
     public static final String SQL_DELETE_ENTRIES5 ="DROP TABLE IF EXISTS " + FeedEntry.TABLE_PREFERENCES;
     public static final String SQL_DELETE_ENTRIES6 ="DROP TABLE IF EXISTS " + FeedEntry.TABLE_USER;
     public static final String SQL_DELETE_ENTRIES7 ="DROP TABLE IF EXISTS " + FeedEntry.TABLE_WL;
-
+    public static final String Create_user="INSERT INTO " + FeedEntry.TABLE_USER+ "\n"+
+            "VALUES" +
+            "('User1', 'user1'),\n" +
+            "('User2', 'user2'),\n" +
+            "('User3', 'user3'),\n" +
+            "('User4', 'user4'),\n" +
+            "('User5', 'user5');";
+    public static final String Create_profil ="INSERT INTO " + FeedEntry.TABLE_PROFIL+ "\n"+
+            "VALUES" +
+            "('User1', 'Avril', 'Lavigne', '20', 'Bastogne', NULL),\n" +
+            "('User2', 'Bruce', 'Willis', '68', 'Bois de boulogne', NULL),\n" +
+            "('User3', 'Johnny', 'Cadillac', '35', 'Charleroi', NULL),\n" +
+            "('User4', 'Anthony', 'Delperdange', '20', 'Liège', NULL),\n" +
+            "('User5', 'Ingrid', 'Bettencourt', '20', 'On cherche', NULL);";
 
 }
