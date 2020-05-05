@@ -4,7 +4,6 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
-import android.provider.BaseColumns;
 import android.util.Log;
 
 import com.example.wishlist.Backend.FeedReaderContract;
@@ -50,6 +49,7 @@ public class UserDAO {
         db.close();
         return ret;
     }
+
     public boolean AddUserDB(String pseudo, String mdp){
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -62,8 +62,13 @@ public class UserDAO {
         }
         db.close();
         return true;
+    }
 
-
-
+    public void AddDataDB(String name, String firstname, String age){
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(FeedReaderContract.FeedEntry.COLUMN_PROFIL_NOM, name);
+        values.put(FeedReaderContract.FeedEntry.COLUMN_PROFIL_PRENOM, firstname);
+        values.put(FeedReaderContract.FeedEntry.COLUMN_PROFIL_AGE, age);
     }
 }

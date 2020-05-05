@@ -15,9 +15,13 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import com.example.wishlist.Backend.Article;
+import com.example.wishlist.Backend.DBManager;
 import com.example.wishlist.Backend.USER;
 import com.example.wishlist.DAO.UserDAO;
 import com.example.wishlist.R;
+
+import java.util.List;
 
 import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
@@ -25,6 +29,8 @@ import static android.provider.AlarmClock.EXTRA_MESSAGE;
 public class MainActivity extends AppCompatActivity {
 
     private Button play;
+    private TextView lblArticles;
+    private DBManager dbManager;
     private final AppCompatActivity activity = MainActivity.this;
     UserDAO userDao;
 
@@ -51,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent otherActivity = new Intent(getApplicationContext(), Menu.class);
+                Intent otherActivity = new Intent(getApplicationContext(), Register_Next.class);
                 Intent resetActivity = new Intent(getApplicationContext(), MainActivity.class);
 
                 USER user = new USER();

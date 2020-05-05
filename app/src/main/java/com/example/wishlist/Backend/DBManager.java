@@ -7,18 +7,21 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.example.wishlist.Interface.Produits;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class DBManager<dbManager> extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "Produits.db";
     private static final  String PRODUITS_TABLE_NAME= "tblVentes";
-    private static final int DATABASE_VERSION = 3;
+    private static final int DATABASE_VERSION = 4;
 
 
     public DBManager(Context context){
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
+
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase){
@@ -44,6 +47,7 @@ public class DBManager<dbManager> extends SQLiteOpenHelper {
                 + designation + "'," + prix + "," + qte  +")";
         this.getWritableDatabase().execSQL(sqlInsert);
     }
+
 
     public List<Article> afficherDetail() {
         List<Article> details = new ArrayList<>();

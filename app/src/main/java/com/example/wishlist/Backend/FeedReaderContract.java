@@ -17,7 +17,7 @@ public final class FeedReaderContract {
         public static final String TABLE_FRIEND="FRIEND";
         public static final String COLUMN_FRIEND_PSEUDO="PSEUDO";
         public static final String COLUMN_FRIEND_PSEUDO2="PSEUDO_2";
-        public static final String COLUMN_FRIEND_FRIEND="Friend";
+        public static final Boolean COLUMN_FRIEND_FRIEND = false;
         public static final String TABLE_ITEM ="ITEM";
         public static final String COLUMN_ITEM_ID="ID";
         public static final String COLUMN_ITEM_WL="WL";
@@ -30,12 +30,13 @@ public final class FeedReaderContract {
         public static final String COLUMN_PROFIL_PSEUDO="Pseudo";
         public static final String COLUMN_PROFIL_NOM="Nom";
         public static final String COLUMN_PROFIL_PRENOM="Prénom";
+        public static final String COLUMN_PROFIL_AGE="Age";
         public static final String COLUMN_PROFIL_ADRESSE="Adresse";
         public static final String COLUMN_PROFIL_PHOTO="Photo";
         public static final String TABLE_PREFERENCES="Preferences";
         public static final String COLUMN_PREFERENCES_PSEUDO="Pseudo";
-        public static final String COLUMN_PREFERENCES__TAILLEP="TailleP";
-        public static final String COLUMN_PREFERENCES_TAILLEH="TailleH";
+        public static final String COLUMN_PREFERENCES_TAILLE_P="TailleP";
+        public static final String COLUMN_PREFERENCES_TAILLE_H="TailleH";
         public static final String COLUMN_PREFERENCES_POINTURE="Pointure";
         public static final String COLUMN_PREFERENCES_COULEUR="Couleur";
         public static final String COLUMN_PREFERENCES_CENTREI="CentreI";
@@ -62,6 +63,7 @@ public final class FeedReaderContract {
             FeedEntry.COLUMN_PROFIL_PSEUDO + " VARCHAR (20) PRIMARY KEY NOT NULL REFERENCES USER (Pseudo)," +
             FeedEntry.COLUMN_PROFIL_NOM + " VARCHAR (20) NOT NULL," +
             FeedEntry.COLUMN_PROFIL_PRENOM + " VARCHAR (20) NOT NULL," +
+            FeedEntry.COLUMN_PROFIL_AGE + " VARCHAR (20) NOT NULL," +
             FeedEntry.COLUMN_PROFIL_ADRESSE +" VARCHAR (100) NOT NULL," +
             FeedEntry.COLUMN_PROFIL_PHOTO +" LONGBLOB" +")";
     public static final String SQL_CREATE_ENTRIES3="CREATE TABLE " +  FeedEntry.TABLE_ITEM + "(" +
@@ -74,8 +76,8 @@ public final class FeedReaderContract {
             FeedEntry.COLUMN_ITEM_IDWL + " VARCHAR (20) REFERENCES WL (ID_WL)" + ")";
     public static final String SQL_CREATE_ENTRIES4="CREATE TABLE " + FeedEntry.TABLE_PREFERENCES +"(" +
             FeedEntry.COLUMN_PREFERENCES_PSEUDO + " VARCHAR (20) PRIMARY KEY NOT NULL REFERENCES USER (Pseudo)," +
-            FeedEntry.COLUMN_PREFERENCES__TAILLEP +  " VARCHAR (20),"+
-            FeedEntry.COLUMN_PREFERENCES_TAILLEH + " VARCHAR (20),"+
+            FeedEntry.COLUMN_PREFERENCES_TAILLE_P +  " VARCHAR (20),"+
+            FeedEntry.COLUMN_PREFERENCES_TAILLE_H + " VARCHAR (20),"+
             FeedEntry.COLUMN_PREFERENCES_POINTURE + " VARCHAR (20),"+
             FeedEntry.COLUMN_PREFERENCES_COULEUR + " VARCHAR (20),"+
             FeedEntry.COLUMN_PREFERENCES_CENTREI +" VARCHAR (50)" + ")";

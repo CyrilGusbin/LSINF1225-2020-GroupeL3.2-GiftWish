@@ -20,18 +20,22 @@ public class Article {
     }
 
     public String getDesignation() {
+
         return designation;
     }
 
     public double getPrix() {
+
         return prix;
     }
 
     public double getQte() {
+
         return qte;
     }
 
     public void setId(int id) {
+
         this.id = id;
     }
 
@@ -40,6 +44,7 @@ public class Article {
     }
 
     public void setPrix(double prix) {
+
         this.prix = prix;
     }
 
