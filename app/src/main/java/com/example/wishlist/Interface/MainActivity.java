@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent otherActivity = new Intent(getApplicationContext(), Register_Next.class);
+                Intent otherActivity = new Intent(getApplicationContext(), Menu.class);
                 Intent resetActivity = new Intent(getApplicationContext(), MainActivity.class);
 
                 USER user = new USER();
