@@ -18,7 +18,7 @@
         android:layout_height="100dp"
         android:layout_alignParentTop="true"
         android:text="TextView"
-        android:textColor="@color/liste"
+        android:textColor="@color/Noir"
         android:textSize="40sp"
         android:textStyle="bold" />
 
