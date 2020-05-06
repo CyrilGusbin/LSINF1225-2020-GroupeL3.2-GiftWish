@@ -12,6 +12,7 @@
         android:layout_height="100dp"
         android:layout_alignParentTop="true"
         android:layout_centerInParent="true"
+        android:layout_marginBottom="-200dp"
         android:clickable="true"
         android:onClick="open_items"
         android:text="TextView"

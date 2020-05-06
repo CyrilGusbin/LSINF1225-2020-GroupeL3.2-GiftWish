@@ -168,5 +168,26 @@ public class UserDAO {
         cursor.close();
         return lst;
 
-    }}
+    }
+    public boolean create_wishlist(String pseudo, String nwl, String desc, int edit, String id ){
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        if (nwl.length()==0){
+            return false;
+        }
+        values.put(FeedReaderContract.FeedEntry.COLUMN_WL_PSEUDO, pseudo);
+        values.put(FeedReaderContract.FeedEntry.COLUMN_WL_NWL, nwl);
+        values.put(FeedReaderContract.FeedEntry.COLUMN_WL_DESCRIPTION, desc);
+        values.put(FeedReaderContract.FeedEntry.COLUMN_WL_PSEUDO, pseudo);
+        values.put(FeedReaderContract.FeedEntry.COLUMN_WL_EDIT, edit);
+        values.put(FeedReaderContract.FeedEntry.COLUMN_WL_IDWL, id);
+        long newRowId = db.insertWithOnConflict(FeedReaderContract.FeedEntry.TABLE_WL, null, values, SQLiteDatabase.CONFLICT_IGNORE);
+        db.close();
+        if(newRowId==-1){
+            return false;
+        }
+        return true;
+
+    }
+}
 

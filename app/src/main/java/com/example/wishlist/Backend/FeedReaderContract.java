@@ -88,7 +88,7 @@ public final class FeedReaderContract {
     public static final String SQL_CREATE_ENTRIES6="CREATE TABLE " + FeedEntry.TABLE_WL + "(" +
             FeedEntry.COLUMN_WL_PSEUDO + " VARCHAR (20) NOT NULL REFERENCES USER (Pseudo)," +
             FeedEntry.COLUMN_WL_NWL + " VARCHAR (20) NOT NULL," +
-            FeedEntry.COLUMN_WL_DESCRIPTION + " VARCHAR (20)," +
+            FeedEntry.COLUMN_WL_DESCRIPTION + " VARCHAR (100)," +
             FeedEntry.COLUMN_WL_EDIT + " BIT NOT NULL," +
             FeedEntry.COLUMN_WL_IDWL + " VARCHAR (20)" +")";
     public static final String SQL_DELETE_ENTRIES ="DROP TABLE IF EXISTS " + FeedEntry.TABLE_AUTORISATION;

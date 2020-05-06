@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.wishlist.Backend.wishlist_intermediate;
 import com.example.wishlist.R;
 
 import static android.provider.AlarmClock.EXTRA_MESSAGE;
@@ -34,7 +35,7 @@ public class Menu extends AppCompatActivity {
         play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent otherActivity = new Intent(getApplicationContext(), WishLists.class);
+                Intent otherActivity = new Intent(getApplicationContext(), wishlist_intermediate.class);
                 otherActivity.putExtra(EXTRA_MESSAGE, pseudo_bis);
                 startActivity(otherActivity);
              }
