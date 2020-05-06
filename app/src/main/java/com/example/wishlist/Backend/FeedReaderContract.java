@@ -111,5 +111,10 @@ public final class FeedReaderContract {
             "('User3', 'Johnny', 'Cadillac', '35', 'Charleroi', NULL),\n" +
             "('User4', 'Anthony', 'Delperdange', '20', 'Liège', NULL),\n" +
             "('User5', 'Ingrid', 'Bettencourt', '20', 'On cherche', NULL);";
-
+    public static final String Create_wishlist = "INSERT INTO " + FeedEntry.TABLE_WL+ "\n"+
+            "VALUES" +
+            "('User1', 'Noel', 'Idee de cadeau pour noel soyez pas radins sinon je change de nom de famille', 1, '1'),\n" +
+            "('User1', 'voiture', 'Bolides que j aimerais recevoir pour mes 18 ans, merci papa <3', 0, '2'),\n" +
+            "('User2', 'Noel', 'Idee de cadeau pour noel pas de la quincaille', 0, '3'),\n" +
+            "('User3', 'vêtements', 'Contribuez à ma street cred les loosers', 1, '4');";
 }

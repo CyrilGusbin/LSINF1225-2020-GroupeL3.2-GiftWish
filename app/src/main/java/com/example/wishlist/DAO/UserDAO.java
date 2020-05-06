@@ -10,6 +10,8 @@ import com.example.wishlist.Backend.FeedReaderContract;
 import com.example.wishlist.Backend.FeedReaderDbHelper;
 import com.example.wishlist.Backend.USER;
 
+import java.util.ArrayList;
+
 
 public class UserDAO {
     FeedReaderDbHelper dbHelper;
@@ -71,7 +73,7 @@ public class UserDAO {
         values.put(FeedReaderContract.FeedEntry.COLUMN_PROFIL_NOM, name);
         values.put(FeedReaderContract.FeedEntry.COLUMN_PROFIL_PRENOM, firstname);
         values.put(FeedReaderContract.FeedEntry.COLUMN_PROFIL_AGE, age);
-        long newRowId = db.insert(FeedReaderContract.FeedEntry.TABLE_PROFIL, null, values);
+        long newRowId = db.insertWithOnConflict(FeedReaderContract.FeedEntry.TABLE_PROFIL, null, values, SQLiteDatabase.CONFLICT_IGNORE);
         if (newRowId==-1){
             db.close();
             Log.e("Création profil", "failed");
@@ -81,4 +83,35 @@ public class UserDAO {
         Log.e("Création profil", "suceed");
         return true;
     }
-}
+    public String[] get_wishlists(String pseudo){
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        String[] projection = {
+                FeedReaderContract.FeedEntry.COLUMN_WL_NWL
+        };
+        String selection = FeedReaderContract.FeedEntry.COLUMN_WL_PSEUDO+ " = ?";
+        String[] selectionArgs = {pseudo};
+        Cursor cursor = db.query(
+                FeedReaderContract.FeedEntry.TABLE_WL,   // The table to query
+                projection,             // The array of columns to return (pass null to get all)
+                selection,              // The columns for the WHERE clause
+                selectionArgs,          // The values for the WHERE clause
+                null,                   // don't group the rows
+                null,                   // don't filter by row groups
+                null               // The sort order
+        );
+        String[] Liste = new String[cursor.getCount()];
+        cursor.moveToFirst();
+        int ind=0;
+        while(!cursor.isAfterLast()){
+            String lst =cursor.getString(0);
+            Liste[ind]=lst;
+            cursor.moveToNext();
+            ind+=1;
+        }
+        cursor.close();
+        return Liste;
+        }
+
+
+    }
+

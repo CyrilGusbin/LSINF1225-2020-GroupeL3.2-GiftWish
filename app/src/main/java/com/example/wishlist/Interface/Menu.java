@@ -24,7 +24,7 @@ public class Menu extends AppCompatActivity {
         setContentView(R.layout.activity_menu);
 
         Intent intent = getIntent();
-        String pseudo_bis = intent.getStringExtra(EXTRA_MESSAGE);
+        final String pseudo_bis = intent.getStringExtra(EXTRA_MESSAGE);
         TextView textView = findViewById(R.id.pseudo_user);
         textView.setText("Bienvenue, "+pseudo_bis);
 
@@ -35,6 +35,7 @@ public class Menu extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent otherActivity = new Intent(getApplicationContext(), WishLists.class);
+                otherActivity.putExtra(EXTRA_MESSAGE, pseudo_bis);
                 startActivity(otherActivity);
              }
         });
