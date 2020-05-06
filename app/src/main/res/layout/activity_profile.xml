@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient"
     tools:context=".Interface.Profile">
 
     <ImageView
@@ -34,32 +35,57 @@
         android:id="@+id/edit_photo"
         android:layout_width="373dp"
         android:layout_height="59dp"
+        android:background="@drawable/circle_button"
+        android:backgroundTint="@color/colorAccent"
         android:text="edit photo (unavailable)"
+        android:textColor="@color/Blanc"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.578"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.433" />
 
     <Button
         android:id="@+id/edit_profile"
         android:layout_width="373dp"
         android:layout_height="59dp"
+        android:background="@drawable/circle_button"
+        android:backgroundTint="@color/colorAccent"
         android:text="edit profile"
+        android:textColor="@color/Blanc"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.578"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.648" />
+        app:layout_constraintVertical_bias="0.566" />
 
     <Button
         android:id="@+id/delete_account"
         android:layout_width="373dp"
         android:layout_height="59dp"
+        android:background="@drawable/circle_button"
+        android:backgroundTint="@color/colorAccent"
         android:text="Delete Account"
+        android:textColor="@color/Blanc"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.578"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.793" />
+        app:layout_constraintVertical_bias="0.7" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/sans_fond" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
