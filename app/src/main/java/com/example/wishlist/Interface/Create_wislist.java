@@ -50,14 +50,16 @@ public class Create_wislist extends AppCompatActivity {
         boolean ret = userDao.create_wishlist(pseudo_bis, name_bis, dwl_bis, edit, uniqueID);
         if (ret) {
             intent.putExtra(EXTRA_MESSAGE, pseudo_bis);
-            intent.putExtra(EXTRA_MESSAGE2,"wishlist créée");
+            intent.putExtra(EXTRA_MESSAGE2,"La WishList a bien été créée");
             startActivity(intent);
+            finish();
         }
         else{
             Intent intent3 = new Intent(this, Create_wislist.class);
-            intent3.putExtra(EXTRA_MESSAGE3, "données érronés");
+            intent3.putExtra(EXTRA_MESSAGE3, "Données erronées");
             intent3.putExtra(EXTRA_MESSAGE, pseudo_bis);
             startActivity(intent3);
+            finish();
         }
 
 

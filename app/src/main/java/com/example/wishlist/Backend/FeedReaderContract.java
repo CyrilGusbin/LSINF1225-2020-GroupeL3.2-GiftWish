@@ -71,7 +71,7 @@ public final class FeedReaderContract {
     public static final String SQL_CREATE_ENTRIES3="CREATE TABLE " +  FeedEntry.TABLE_ITEM + "(" +
             FeedEntry.COLUMN_ITEM_ID + " varchar (20) PRIMARY KEY NOT NULL," +
             FeedEntry.COLUMN_ITEM_NOM + " varchar (20) NOT NULL,"+
-            FeedEntry.COLUMN_ITEM_DESCRIPTION +  " varchar (20) NOT NULL,"+
+            FeedEntry.COLUMN_ITEM_DESCRIPTION +  " varchar (100) NOT NULL,"+
             FeedEntry.COLUMN_ITEM_PRIX + " varchar (20) NOT NULL," +
             FeedEntry.COLUMN_ITEM_ETAT + " Bit NOT NULL,"+
             FeedEntry.COLUMN_ITEM_IDWL + " VARCHAR (20) REFERENCES WL (ID_WL)" + ")";
@@ -88,7 +88,7 @@ public final class FeedReaderContract {
     public static final String SQL_CREATE_ENTRIES6="CREATE TABLE " + FeedEntry.TABLE_WL + "(" +
             FeedEntry.COLUMN_WL_PSEUDO + " VARCHAR (20) NOT NULL REFERENCES USER (Pseudo)," +
             FeedEntry.COLUMN_WL_NWL + " VARCHAR (20) NOT NULL," +
-            FeedEntry.COLUMN_WL_DESCRIPTION + " VARCHAR (100)," +
+            FeedEntry.COLUMN_WL_DESCRIPTION + " VARCHAR (30)," +
             FeedEntry.COLUMN_WL_EDIT + " BIT NOT NULL," +
             FeedEntry.COLUMN_WL_IDWL + " VARCHAR (20)" +")";
     public static final String SQL_DELETE_ENTRIES ="DROP TABLE IF EXISTS " + FeedEntry.TABLE_AUTORISATION;

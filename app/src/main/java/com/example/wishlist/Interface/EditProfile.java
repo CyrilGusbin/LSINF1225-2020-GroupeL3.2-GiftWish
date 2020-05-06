@@ -30,6 +30,6 @@ public class EditProfile extends AppCompatActivity {
         Intent intent = getIntent();
         String message = intent.getStringExtra(EXTRA_MESSAGE);
         TextView textView = findViewById(R.id.loadPseudo);
-        textView.setText("Votre Pseudo actuel :" +message);
+        textView.setText("Votre Pseudo actuel : "+ message);
     }
 }
