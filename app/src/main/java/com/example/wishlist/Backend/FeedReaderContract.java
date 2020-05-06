@@ -115,6 +115,16 @@ public final class FeedReaderContract {
             "VALUES" +
             "('User1', 'Noel', 'Idee de cadeau pour noel soyez pas radins sinon je change de nom de famille', 1, '1'),\n" +
             "('User1', 'voiture', 'Bolides que j aimerais recevoir pour mes 18 ans, merci papa <3', 0, '2'),\n" +
+            "('User1', 'vetements', 'liste de vêtement dont j ai besoin', 0, '5'),\n" +
+            "('User1', 'jeux', 'jeux-vidéo qui me plairait', 0, '6'),\n" +
+            "('User1', 'mobilier', 'meuble pour le kot', 0, '7'),\n" +
+            "('User1', 'ecole', 'fournitures scolaires', 0, '8'),\n" +
+            "('User1', 'chaussures', 'Nike ou adidas', 0, '9'),\n" +
+            "('User1', 'telephone', 'Samsung please', 0, '10'),\n" +
+            "('User1', 'sport', 'vetements athlétisme', 0, '11'),\n" +
+            "('User1', 'animal', 'pas de chien', 0, '12'),\n" +
+            "('User1', 'anniversaire', 'pas deux fois le même cadeaux svp', 0, '13'),\n" +
+            "('User1', 'tableau', 'pour ma galerie d art', 0, '2'),\n" +
             "('User2', 'Noel', 'Idee de cadeau pour noel pas de la quincaille', 0, '3'),\n" +
             "('User3', 'vêtements', 'Contribuez à ma street cred les loosers', 1, '4');";
 }
