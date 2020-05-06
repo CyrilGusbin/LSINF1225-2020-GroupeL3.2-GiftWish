@@ -28,11 +28,11 @@ public final class FeedReaderContract {
         public static final String COLUMN_ITEM_IDWL="ID_WL";
         public static final String TABLE_PROFIL="PROFIL";
         public static final String COLUMN_PROFIL_PSEUDO="Pseudo";
+        public static final String COLUMN_PROFIL_PHOTO="Photo";
         public static final String COLUMN_PROFIL_NOM="Nom";
         public static final String COLUMN_PROFIL_PRENOM="Prénom";
         public static final String COLUMN_PROFIL_AGE="Age";
         public static final String COLUMN_PROFIL_ADRESSE="Adresse";
-        public static final String COLUMN_PROFIL_PHOTO="Photo";
         public static final String TABLE_PREFERENCES="Preferences";
         public static final String COLUMN_PREFERENCES_PSEUDO="Pseudo";
         public static final String COLUMN_PREFERENCES_TAILLE_P="TailleP";

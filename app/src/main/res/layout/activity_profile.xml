@@ -67,7 +67,7 @@
         android:layout_height="59dp"
         android:background="@drawable/circle_button"
         android:backgroundTint="@color/colorAccent"
-        android:text="Delete Account"
+        android:text="Delete Account (unavailable)"
         android:textColor="@color/Blanc"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
