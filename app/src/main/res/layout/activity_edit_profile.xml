@@ -4,61 +4,105 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient"
     tools:context=".Interface.EditProfile">
 
     <Button
-        android:id="@+id/set_nom"
-        android:layout_width="371dp"
-        android:layout_height="53dp"
-        android:text="Edit Name"
+        android:id="@+id/set_pseudo"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:background="@drawable/circle_button"
+        android:backgroundTint="@color/colorAccent"
+        android:text="Edit Pseudo"
+        android:textColor="@color/Blanc"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.164"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.134" />
-
-    <Button
-        android:id="@+id/set_prenom"
-        android:layout_width="371dp"
-        android:layout_height="53dp"
-        android:text="Edit firstname"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.299" />
+        app:layout_constraintVertical_bias="0.287" />
 
     <Button
         android:id="@+id/change_mdp"
-        android:layout_width="371dp"
-        android:layout_height="53dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:background="@drawable/circle_button"
+        android:backgroundTint="@color/colorAccent"
         android:text="edit password"
+        android:textColor="@color/Blanc"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.827"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.48" />
+        app:layout_constraintVertical_bias="0.287" />
 
     <Button
-        android:id="@+id/set_sexe"
-        android:layout_width="371dp"
-        android:layout_height="53dp"
-        android:text="edit gender"
+        android:id="@+id/set_something"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:background="@drawable/circle_button"
+        android:backgroundTint="@color/colorAccent"
+        android:text=""
+        android:textColor="@color/Blanc"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.164"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.662" />
+        app:layout_constraintVertical_bias="0.638" />
 
     <Button
         android:id="@+id/set_preferences"
-        android:layout_width="371dp"
-        android:layout_height="53dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:background="@drawable/circle_button"
+        android:backgroundTint="@color/colorAccent"
         android:text="edit preferences"
+        android:textColor="@color/Blanc"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.827"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.842" />
+        app:layout_constraintVertical_bias="0.638" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/sans_fond" />
+
+    <TextView
+        android:id="@+id/loadPseudo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.252"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.179" />
+
+    <TextView
+        android:id="@+id/beta_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/BETA"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:textColor="#110"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.133"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.049" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

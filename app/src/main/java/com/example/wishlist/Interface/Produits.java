@@ -22,6 +22,8 @@ public class Produits extends AppCompatActivity {
         setContentView(R.layout.activity_produits);
 
 
+
+
         //TODO : FAIRE EN SORTE QUE LA LISTE DES PRODUITS NE SE FASSENT QU'UNE FOIS. (IL FAUT LA CRÉER DIRECTEMENT DANS LA BASE DE DONNÉE.)
 
         //lblArticles=(TextView)findViewById(R.id.lblArticles);
