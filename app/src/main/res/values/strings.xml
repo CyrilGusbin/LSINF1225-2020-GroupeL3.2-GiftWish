@@ -5,4 +5,5 @@
     <string name="Pseudo_register">Pseudo</string>
     <string name="Password_register">Password</string>
     <string name="forgotPassword"><u>Forgot your password?</u></string>
+    <string name="BETA">BETA VERSION</string>
 </resources>

@@ -35,6 +35,9 @@ public class Profile extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent otherActivity = new Intent(getApplicationContext(), EditProfile.class);
+                Intent intent =getIntent();
+                String getPseudo = intent.getStringExtra(EXTRA_MESSAGE);
+                intent.putExtra(EXTRA_MESSAGE, getPseudo);
                 startActivity(otherActivity);
             }
         });
