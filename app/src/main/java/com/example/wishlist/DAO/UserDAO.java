@@ -189,5 +189,27 @@ public class UserDAO {
         return true;
 
     }
+    public boolean create_item(String IID, String item, String desc,String prix,String IDWL){
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        if (item.length()==0){
+            return false;
+        }
+        if (prix.length()==0){
+            return false;
+        }
+        values.put(FeedReaderContract.FeedEntry.COLUMN_ITEM_ID, IID);
+        values.put(FeedReaderContract.FeedEntry.COLUMN_ITEM_NOM, item);
+        values.put(FeedReaderContract.FeedEntry.COLUMN_ITEM_DESCRIPTION, desc);
+        values.put(FeedReaderContract.FeedEntry.COLUMN_ITEM_PRIX, prix);
+        values.put(FeedReaderContract.FeedEntry.COLUMN_ITEM_ETAT, 0);
+        values.put(FeedReaderContract.FeedEntry.COLUMN_ITEM_IDWL, IDWL);
+        long newRowId = db.insert(FeedReaderContract.FeedEntry.TABLE_ITEM, null, values);
+        db.close();
+        if(newRowId==-1){
+            return false;
+        }
+        return true;
+    }
 }
 

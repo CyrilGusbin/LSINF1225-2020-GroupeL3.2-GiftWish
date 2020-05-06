@@ -11,7 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Interface.Create_wislist"></activity>
+        <activity android:name=".Interface.item_creation"></activity>
+        <activity android:name=".Interface.wishes_intermediate" />
+        <activity android:name=".Interface.Create_wislist" />
         <activity android:name=".Backend.wishlist_intermediate" />
         <activity android:name=".Interface.Wishes" />
         <activity android:name=".Interface.DeleteAccount" />
