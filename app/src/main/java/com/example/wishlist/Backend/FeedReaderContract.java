@@ -18,6 +18,7 @@ public final class FeedReaderContract {
         public static final String COLUMN_FRIEND_PSEUDO="PSEUDO";
         public static final String COLUMN_FRIEND_PSEUDO2="PSEUDO_2";
         public static final Boolean COLUMN_FRIEND_FRIEND = false;
+        public static final Boolean COLUMN_FRIEND_REQUEST = false;
         public static final String TABLE_ITEM ="ITEM";
         public static final String COLUMN_ITEM_ID="ID";
         public static final String COLUMN_ITEM_WL="WL";
@@ -58,7 +59,8 @@ public final class FeedReaderContract {
     public static final String SQL_CREATE_ENTRIES2="CREATE TABLE " + FeedEntry.TABLE_FRIEND + "(" +
     FeedEntry.COLUMN_FRIEND_PSEUDO + " varchar(20) NOT NULL," +
     FeedEntry.COLUMN_FRIEND_PSEUDO2 + " varchar(20) NOT NULL," +
-    FeedEntry.COLUMN_FRIEND_FRIEND + " bit NOT NULL" +")";
+    FeedEntry.COLUMN_FRIEND_FRIEND + " bit NOT NULL" +")" +
+    FeedEntry.COLUMN_FRIEND_REQUEST + "bit NOT NULL " +  ")";
     public static final String SQL_CREATE_ENTRIES7="CREATE TABLE " +  FeedEntry.TABLE_PROFIL  + "("+
             FeedEntry.COLUMN_PROFIL_PSEUDO + " VARCHAR (20) PRIMARY KEY NOT NULL REFERENCES USER (Pseudo)," +
             FeedEntry.COLUMN_PROFIL_NOM + " VARCHAR (20) NOT NULL," +
@@ -132,4 +134,10 @@ public final class FeedReaderContract {
             "('2', 'ps4', 'en attendant la ps5', '200', '1', '1'),\n" +
             "('3', 'chaussures', 'jordans', '150', '0', '1'),\n" +
             "('4', 'Aventador', 'Pour rouler sur Hollywood bld', '1 000 000', '0', '2');";
+
+    public static final String Create_friends = "INSERT INTO" + FeedEntry.TABLE_FRIEND +"\n"+
+            "VALUES" +
+            "('Bernard', 'Thierry', 'true', 'false'), \n " +
+            "('Thierry', 'Jean', 'true', 'false'), \n " +
+            "('Bernard', 'Ludo', 'false', 'true'), \n " ;
 }
