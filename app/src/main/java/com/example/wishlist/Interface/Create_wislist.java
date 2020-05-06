@@ -41,7 +41,7 @@ public class Create_wislist extends AppCompatActivity {
         EditText desc = findViewById(R.id.dwl);
         String name_bis= name.getText().toString();
         String dwl_bis= desc.getText().toString();
-        CheckBox check= (CheckBox) findViewById(R.id.editbox);
+        CheckBox check= findViewById(R.id.editbox);
         boolean checked = check.isChecked();
         int edit=0;
         if(checked){
@@ -53,10 +53,12 @@ public class Create_wislist extends AppCompatActivity {
             intent.putExtra(EXTRA_MESSAGE2,"wishlist créée");
             startActivity(intent);
         }
-        Intent intent3 = new Intent(this, Create_wislist.class);
-        intent3.putExtra(EXTRA_MESSAGE3, "données érronés");
-        intent3.putExtra(EXTRA_MESSAGE, pseudo_bis);
-        startActivity(intent3);
+        else{
+            Intent intent3 = new Intent(this, Create_wislist.class);
+            intent3.putExtra(EXTRA_MESSAGE3, "données érronés");
+            intent3.putExtra(EXTRA_MESSAGE, pseudo_bis);
+            startActivity(intent3);
+        }
 
 
 
