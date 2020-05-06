@@ -12,4 +12,5 @@
     <string name="firstname"><u>Votre prénom :</u></string>
     <string name="age"><u>Votre âge :</u></string>
     <string name="BETA">BETA VERSION</string>
+    <string name="warning_message">Êtes-vous sûr de vouloir supprimer votre compte ? Cette action est irréversible et entrainera la suppression immédiate de toutes vos données.</string>
 </resources>

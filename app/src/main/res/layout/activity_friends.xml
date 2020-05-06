@@ -4,12 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient"
     tools:context=".Interface.Friends">
 
     <ImageButton
         android:id="@+id/imageButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.929"
@@ -20,13 +22,14 @@
 
     <AutoCompleteTextView
         android:id="@+id/search_friend"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="AutoCompleteTextView"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:backgroundTint="@color/colorAccent"
+        android:hint="Cherchez un utilisateur"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.273"
+        app:layout_constraintHorizontal_bias="0.144"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.19" />
+        app:layout_constraintVertical_bias="0.185" />
 </androidx.constraintlayout.widget.ConstraintLayout>

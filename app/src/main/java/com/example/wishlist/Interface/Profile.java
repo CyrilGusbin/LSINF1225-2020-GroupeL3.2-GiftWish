@@ -68,6 +68,16 @@ public class Profile extends AppCompatActivity {
                 startActivity(otherActivity);
             }
         });
+
+        this.play = findViewById(R.id.delete_account);
+        play.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent otherActivity = new Intent(getApplicationContext(), DeleteAccount.class);
+                startActivity(otherActivity);
+                finish();
+            }
+        });
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
