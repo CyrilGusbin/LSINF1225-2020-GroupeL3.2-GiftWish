@@ -111,7 +111,62 @@ public class UserDAO {
         cursor.close();
         return Liste;
         }
+    public String[] get_wishes(String idwl){
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        String[] projection = {
+                FeedReaderContract.FeedEntry.COLUMN_ITEM_NOM
 
-
+        };
+        String selection = FeedReaderContract.FeedEntry.COLUMN_ITEM_IDWL+ " = ?";
+        String[] selectionArgs = {idwl};
+        Cursor cursor = db.query(
+                FeedReaderContract.FeedEntry.TABLE_ITEM,   // The table to query
+                projection,             // The array of columns to return (pass null to get all)
+                selection,              // The columns for the WHERE clause
+                selectionArgs,          // The values for the WHERE clause
+                null,                   // don't group the rows
+                null,                   // don't filter by row groups
+                null               // The sort order
+        );
+        String[] Liste = new String[cursor.getCount()];
+        cursor.moveToFirst();
+        int ind=0;
+        while(!cursor.isAfterLast()){
+            String lst =cursor.getString(0);
+            Liste[ind]=lst;
+            cursor.moveToNext();
+            ind+=1;
+        }
+        cursor.close();
+        return Liste;
     }
+    public String obtain_idwl(String pseudo, String nwl){
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        String[] projection = {
+                FeedReaderContract.FeedEntry.COLUMN_WL_IDWL
+
+        };
+        String selection = FeedReaderContract.FeedEntry.COLUMN_WL_NWL+ " = ? AND " + FeedReaderContract.FeedEntry.COLUMN_WL_PSEUDO + " = ?";
+        String[] selectionArgs = {
+                nwl,
+                pseudo
+        };
+        Cursor cursor = db.query(
+                FeedReaderContract.FeedEntry.TABLE_WL,   // The table to query
+                projection,             // The array of columns to return (pass null to get all)
+                selection,              // The columns for the WHERE clause
+                selectionArgs,          // The values for the WHERE clause
+                null,                   // don't group the rows
+                null,                   // don't filter by row groups
+                null               // The sort order
+        );
+        cursor.moveToFirst();
+        String lst = null;
+        if (!cursor.isAfterLast()) {
+            lst =cursor.getString(0); 
+        }
+        cursor.close();
+        return lst;
+
+    }}
 

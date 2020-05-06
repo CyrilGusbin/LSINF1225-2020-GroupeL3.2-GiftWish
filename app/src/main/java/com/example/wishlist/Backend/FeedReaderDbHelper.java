@@ -8,6 +8,7 @@ import android.util.Log;
 
 import com.example.wishlist.Backend.FeedReaderContract;
 
+import static com.example.wishlist.Backend.FeedReaderContract.Create_items;
 import static com.example.wishlist.Backend.FeedReaderContract.Create_profil;
 import static com.example.wishlist.Backend.FeedReaderContract.Create_user;
 import static com.example.wishlist.Backend.FeedReaderContract.Create_wishlist;
@@ -27,7 +28,7 @@ import static com.example.wishlist.Backend.FeedReaderContract.SQL_DELETE_ENTRIES
 import static com.example.wishlist.Backend.FeedReaderContract.SQL_DELETE_ENTRIES6;
 import static com.example.wishlist.Backend.FeedReaderContract.SQL_DELETE_ENTRIES7;
 public class FeedReaderDbHelper extends SQLiteOpenHelper {
-    public static final int DATABASE_VERSION = 6;
+    public static final int DATABASE_VERSION = 8;
     public static final String DATABASE_NAME = "FeedReader.db";
     public FeedReaderDbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -44,6 +45,7 @@ public class FeedReaderDbHelper extends SQLiteOpenHelper {
         db.execSQL(Create_user);
         db.execSQL(Create_profil);
         db.execSQL(Create_wishlist);
+        db.execSQL(Create_items);
         Log.e("Database operations", "Tables created");
     }
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {

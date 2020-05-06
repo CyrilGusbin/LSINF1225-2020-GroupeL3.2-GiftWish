@@ -11,8 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Interface.DeleteAccount"></activity>
-        <activity android:name=".Backend.Myadapter" />
+        <activity android:name=".Interface.Wishes"></activity>
+        <activity android:name=".Interface.DeleteAccount" />
+        <activity android:name=".Backend.MyAdapter" />
         <activity android:name=".Interface.Register_Next" />
         <activity android:name=".Interface.EditProfile" />
         <activity android:name=".Interface.Produits" />

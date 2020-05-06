@@ -68,7 +68,6 @@ public final class FeedReaderContract {
             FeedEntry.COLUMN_PROFIL_PHOTO +" LONGBLOB" +")";
     public static final String SQL_CREATE_ENTRIES3="CREATE TABLE " +  FeedEntry.TABLE_ITEM + "(" +
             FeedEntry.COLUMN_ITEM_ID + " varchar (20) PRIMARY KEY NOT NULL," +
-            FeedEntry.COLUMN_ITEM_WL +  " varchar (20) NOT NULL,"+
             FeedEntry.COLUMN_ITEM_NOM + " varchar (20) NOT NULL,"+
             FeedEntry.COLUMN_ITEM_DESCRIPTION +  " varchar (20) NOT NULL,"+
             FeedEntry.COLUMN_ITEM_PRIX + " varchar (20) NOT NULL," +
@@ -127,4 +126,10 @@ public final class FeedReaderContract {
             "('User1', 'tableau', 'pour ma galerie d art', 0, '2'),\n" +
             "('User2', 'Noel', 'Idee de cadeau pour noel pas de la quincaille', 0, '3'),\n" +
             "('User3', 'vêtements', 'Contribuez à ma street cred les loosers', 1, '4');";
+    public static final String Create_items= "INSERT INTO " + FeedEntry.TABLE_ITEM+ "\n"+
+            "VALUES" +
+            "('1', 'velo', 'bmx de feu', '300', '0', '1'),\n" +
+            "('2', 'ps4', 'en attendant la ps5', '200', '1', '1'),\n" +
+            "('3', 'chaussures', 'jordans', '150', '0', '1'),\n" +
+            "('4', 'Aventador', 'Pour rouler sur Hollywood bld', '1 000 000', '0', '2');";
 }
