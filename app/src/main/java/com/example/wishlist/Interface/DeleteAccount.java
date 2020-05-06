@@ -41,6 +41,7 @@ public class DeleteAccount extends AppCompatActivity {
                 Intent otherActivity = new Intent(getApplicationContext(), MainActivity.class);
                 //TODO : SUPPRIMER L'ENSEMBLE DES DONNEES DE l'UTILISATEUR
                 startActivity(otherActivity);
+                finish();
             }
         });
 
