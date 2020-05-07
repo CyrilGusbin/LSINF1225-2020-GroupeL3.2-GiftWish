@@ -46,11 +46,13 @@ public class item_creation extends AppCompatActivity {
             intent2.putExtra(EXTRA_MESSAGE4, "Item créé");
             intent2.putExtra(EXTRA_MESSAGE, idwl);
             startActivity(intent2);
+            finish();
         }
         else{
             Intent intent3 = new Intent(this, item_creation.class);
             intent3.putExtra(EXTRA_MESSAGE5, "Données érronées");
             startActivity(intent3);
+            finish();
         }
 
     }

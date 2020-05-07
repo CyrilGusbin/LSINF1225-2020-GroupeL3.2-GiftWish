@@ -34,6 +34,10 @@ public class MainActivity extends AppCompatActivity {
     private final AppCompatActivity activity = MainActivity.this;
     UserDAO userDao;
 
+    @Override
+    public void onBackPressed() {
+        //doNothing
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
 
         Intent intent= getIntent();
         String message = intent.getStringExtra(EXTRA_MESSAGE);

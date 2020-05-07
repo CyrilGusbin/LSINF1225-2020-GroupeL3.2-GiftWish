@@ -35,6 +35,7 @@ public class wishes_intermediate extends AppCompatActivity {
         Intent intent2= new Intent(this, Wishes.class);
         intent2.putExtra(EXTRA_MESSAGE, idwl);
         startActivity(intent2);
+        finish();
     }
     public void go_to_item_creation(View view){
         Intent intent= getIntent();
@@ -42,6 +43,7 @@ public class wishes_intermediate extends AppCompatActivity {
         Intent intent2= new Intent(this, item_creation.class);
         intent2.putExtra(EXTRA_MESSAGE, idwl);
         startActivity(intent2);
+        finish();
 
     }
 

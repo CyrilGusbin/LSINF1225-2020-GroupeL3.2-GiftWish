@@ -19,6 +19,12 @@ public class Menu extends AppCompatActivity {
 
     private Button play;
 
+    //Empêche le bouton "back" de faire une quelconque action.
+    @Override
+    public void onBackPressed() {
+        //doNothing
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
