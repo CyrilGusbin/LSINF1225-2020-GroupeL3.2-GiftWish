@@ -53,6 +53,12 @@ public class friends_intermediate extends AppCompatActivity {
             intent2.putExtra(EXTRA_MESSAGE2, "utilisateur inexistant ou déjà dans votre liste d'ami");
             startActivity(intent2);
         }
-
+    }
+    public void go_to_demands(View view){
+            Intent intent= getIntent();
+            String pseudo= intent.getStringExtra(EXTRA_MESSAGE);
+            Intent intent2= new Intent(this, Demands.class);
+            intent2.putExtra(EXTRA_MESSAGE, pseudo);
+            startActivity(intent2);
     }
 }
