@@ -345,5 +345,47 @@ public class UserDAO {
         }
 
     }
+    public String[]  ALL_users(String pseudo){
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        String[] projection = {
+                FeedReaderContract.FeedEntry.COLUMN_USER_PSEUDO
+        };
+        String selection = FeedReaderContract.FeedEntry.COLUMN_USER_PSEUDO+ " != ? " ;
+        String[] selectionArgs = {pseudo};
+        Cursor cursor = db.query(
+                FeedReaderContract.FeedEntry.TABLE_USER,   // The table to query
+                projection,             // The array of columns to return (pass null to get all)
+                selection,              // The columns for the WHERE clause
+                selectionArgs,          // The values for the WHERE clause
+                null,                   // don't group the rows
+                null,                   // don't filter by row groups
+                null               // The sort order
+        );
+        String[] Liste = new String[cursor.getCount()];
+        cursor.moveToFirst();
+        int ind=0;
+        while(!cursor.isAfterLast()){
+            String lst =cursor.getString(0);
+            Liste[ind]=lst;
+            cursor.moveToNext();
+            ind+=1;
+        }
+        cursor.close();
+        return Liste;
+    }
+    public void connection_all_other_users(String pseudo){
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        String[] everyUser = ALL_users(pseudo);
+        for (int i=0; i<= (everyUser.length)-1; i++) {
+            ContentValues values = new ContentValues();
+            values.put(FeedReaderContract.FeedEntry.COLUMN_FRIEND_PSEUDO, pseudo);
+            values.put(FeedReaderContract.FeedEntry.COLUMN_FRIEND_PSEUDO2, everyUser[i]);
+            values.put(FeedReaderContract.FeedEntry.COLUMN_FRIEND_FRIEND, "0");
+            values.put(FeedReaderContract.FeedEntry.COLUMN_FRIEND_REQUEST, "0");
+            db.insertWithOnConflict(FeedReaderContract.FeedEntry.TABLE_FRIEND, null, values, SQLiteDatabase.CONFLICT_IGNORE);
+        }
+
+    }
 }
+
 
