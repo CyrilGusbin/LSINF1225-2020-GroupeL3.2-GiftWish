@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.example.wishlist.Backend.MyAdapterFriend;
 import com.example.wishlist.Backend.MyAdapterWishes;
 import com.example.wishlist.DAO.UserDAO;
 import com.example.wishlist.R;
@@ -32,9 +33,9 @@ public class Friends extends AppCompatActivity {
         setContentView(R.layout.activity_friends);
         userDao= new UserDAO(activity);
         Intent intent= getIntent();
-        final String id = intent.getStringExtra(EXTRA_MESSAGE);
-        String[] myDataset= userDao.get_friendlist(id);
-        recyclerView = findViewById(R.id.friends_view);
+        final String pseudo = intent.getStringExtra(EXTRA_MESSAGE);
+        String[] myDataset= userDao.get_friendlist(pseudo);
+        recyclerView = findViewById(R.id.my_recycler_view3);
 
         // use this setting to improve performance if you know that changes
         // in content do not change the layout size of the RecyclerView
@@ -45,7 +46,7 @@ public class Friends extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
 
         // specify an adapter (see also next example)
-        mAdapter = new MyAdapterWishes(myDataset);
+        mAdapter = new MyAdapterFriend(myDataset);
         recyclerView.setAdapter(mAdapter);
 
     }

@@ -264,10 +264,10 @@ public class UserDAO {
     public String[] get_friendlist(String pseudo){
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         String[] projection = {
-                FeedReaderContract.FeedEntry.COLUMN_FRIEND_PSEUDO,
                 FeedReaderContract.FeedEntry.COLUMN_FRIEND_PSEUDO2,
+                FeedReaderContract.FeedEntry.COLUMN_FRIEND_PSEUDO,
         };
-        String selection = FeedReaderContract.FeedEntry.COLUMN_FRIEND_PSEUDO+ " = ? AND " + FeedReaderContract.FeedEntry.COLUMN_FRIEND_FRIEND+ " = ? OR " + FeedReaderContract.FeedEntry.COLUMN_FRIEND_PSEUDO2+ " = ? AND "  + FeedReaderContract.FeedEntry.COLUMN_FRIEND_FRIEND+" = ? " ;
+        String selection = FeedReaderContract.FeedEntry.COLUMN_FRIEND_PSEUDO+ " = ? AND " + FeedReaderContract.FeedEntry.COLUMN_FRIEND_FRIEND+ " = ? Or " + FeedReaderContract.FeedEntry.COLUMN_FRIEND_PSEUDO2+ " = ? AND "  + FeedReaderContract.FeedEntry.COLUMN_FRIEND_FRIEND+" = ? " ;
         String[] selectionArgs = {pseudo,"1",pseudo,"1"};
         Cursor cursor = db.query(
                 FeedReaderContract.FeedEntry.TABLE_FRIEND,   // The table to query
@@ -283,7 +283,15 @@ public class UserDAO {
         int ind=0;
         while(!cursor.isAfterLast()){
             String lst =cursor.getString(0);
-            Liste[ind]=lst;
+            String lst2=cursor.getString(1);
+            if(lst==pseudo){
+                Liste[ind]=lst2;
+                Log.e("ligne", lst2);
+            }
+            else{
+                Liste[ind]=lst;
+                Log.e("ligne", lst);
+            }
             cursor.moveToNext();
             ind+=1;
         }
