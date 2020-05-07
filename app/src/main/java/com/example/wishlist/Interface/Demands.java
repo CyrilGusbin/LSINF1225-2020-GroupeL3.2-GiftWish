@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
 
 import com.example.wishlist.Backend.MyAdapterDemands;
 import com.example.wishlist.Backend.MyAdapterWishes;
@@ -15,6 +17,7 @@ import com.example.wishlist.R;
 import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
 public class Demands extends AppCompatActivity {
+    public static final String EXTRA_MESSAGE3 ="" ;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
@@ -41,5 +44,17 @@ public class Demands extends AppCompatActivity {
         // specify an adapter (see also next example)
         mAdapter = new MyAdapterDemands(myDataset);
         recyclerView.setAdapter(mAdapter);
+    }
+    public void accept(View view){
+        Intent intent= new Intent(this,friends_intermediate.class);
+        Intent intent2=getIntent();
+        String pseudo= intent2.getStringExtra(EXTRA_MESSAGE);
+        TextView friend= findViewById(R.id.row_d);
+        String friend_bis= friend.getText().toString();
+        userDao= new UserDAO(activity);
+        userDao.accept_friend(pseudo, friend_bis);
+        intent.putExtra(EXTRA_MESSAGE, pseudo);
+        intent.putExtra(EXTRA_MESSAGE3, "demande d'ami acceptée");
+        startActivity(intent);
     }
 }

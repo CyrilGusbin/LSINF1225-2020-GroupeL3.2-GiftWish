@@ -18,7 +18,8 @@ public final class FeedReaderContract {
         public static final String COLUMN_FRIEND_PSEUDO="PSEUDO";
         public static final String COLUMN_FRIEND_PSEUDO2="PSEUDO_2";
         public static final String COLUMN_FRIEND_FRIEND = "Friend";
-        public static final String COLUMN_FRIEND_REQUEST = "Request";
+        public static final String COLUMN_FRIEND_REQUEST1 = "Request";
+        public static final String COLUMN_FRIEND_REQUEST2 = "Request2";
         public static final String TABLE_ITEM ="ITEM";
         public static final String COLUMN_ITEM_ID="ID";
         public static final String COLUMN_ITEM_WL="WL";
@@ -50,7 +51,6 @@ public final class FeedReaderContract {
         public static final String COLUMN_WL_DESCRIPTION="Description";
         public static final String COLUMN_WL_EDIT="EDIT";
         public static final String COLUMN_WL_IDWL="ID_WL";
-
     }
     public static final String SQL_CREATE_ENTRIES="CREATE TABLE " + FeedEntry.TABLE_AUTORISATION +"(" +
     FeedEntry.COLUMN_AUTORISATION_PSEUDO + " varchar (20) NOT NULL REFERENCES USER (Pseudo)," +
@@ -60,7 +60,8 @@ public final class FeedReaderContract {
     FeedEntry.COLUMN_FRIEND_PSEUDO + " varchar(20) NOT NULL," +
     FeedEntry.COLUMN_FRIEND_PSEUDO2 + " varchar(20) NOT NULL," +
     FeedEntry.COLUMN_FRIEND_FRIEND + " bit NOT NULL," +
-    FeedEntry.COLUMN_FRIEND_REQUEST + " bit NOT NULL " +  ")";
+            FeedEntry.COLUMN_FRIEND_REQUEST1+ " bit NOT NULL," +
+    FeedEntry.COLUMN_FRIEND_REQUEST2 + " bit NOT NULL " +  ")";
     public static final String SQL_CREATE_ENTRIES7="CREATE TABLE " +  FeedEntry.TABLE_PROFIL  + "("+
             FeedEntry.COLUMN_PROFIL_PSEUDO + " VARCHAR (20) PRIMARY KEY NOT NULL REFERENCES USER (Pseudo)," +
             FeedEntry.COLUMN_PROFIL_NOM + " VARCHAR (20) NOT NULL," +
@@ -137,8 +138,13 @@ public final class FeedReaderContract {
 
     public static final String Create_friends = "INSERT INTO " + FeedEntry.TABLE_FRIEND +"\n"+
             "VALUES" +
-            "('User1', 'User2', '1', '0'), \n " +
-            "('User1', 'User3', '0', '0'), \n " +
-            "('User1', 'User5', '0', '0'), \n " +
-            "('User1', 'User4', '0', '0');" ;
+            "('User1', 'User2', '1', '0', '0'), \n " +
+            "('User1', 'User3', '0', '1', '0'), \n " +
+            "('User2', 'User3', '0', '0', '0'), \n " +
+            "('User2', 'User5', '0', '0', '0'), \n " +
+            "('User2', 'User4', '0', '0', '0'), \n " +
+            "('User3', 'User4', '0', '0', '0'), \n " +
+            "('User3', 'User5', '0', '0', '0'), \n " +
+            "('User4', 'User5', '0', '1', '0'), \n " +
+            "('User1', 'User4', '0', '0', '1');" ;
 }

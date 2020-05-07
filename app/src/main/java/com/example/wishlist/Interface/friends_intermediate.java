@@ -25,6 +25,9 @@ public class friends_intermediate extends AppCompatActivity {
         String feedback=intent.getStringExtra(EXTRA_MESSAGE2);
         TextView feed= findViewById(R.id.back);
         feed.setText(feedback);
+        String feedbackaccept= intent.getStringExtra(Demands.EXTRA_MESSAGE3);
+        TextView accept = findViewById(R.id.feedbackaccept);
+        accept.setText(feedbackaccept);
     }
     public void go_to_friends_liste(View view){
         Intent intent=getIntent();

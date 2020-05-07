@@ -272,11 +272,11 @@ public class UserDAO {
     public String[] get_friendlist(String pseudo){
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         String[] projection = {
-                FeedReaderContract.FeedEntry.COLUMN_FRIEND_PSEUDO2,
-                FeedReaderContract.FeedEntry.COLUMN_FRIEND_PSEUDO,
+                FeedReaderContract.FeedEntry.COLUMN_FRIEND_PSEUDO
+
         };
-        String selection = FeedReaderContract.FeedEntry.COLUMN_FRIEND_PSEUDO+ " = ? AND " + FeedReaderContract.FeedEntry.COLUMN_FRIEND_FRIEND+ " = ? Or " + FeedReaderContract.FeedEntry.COLUMN_FRIEND_PSEUDO2+ " = ? AND "  + FeedReaderContract.FeedEntry.COLUMN_FRIEND_FRIEND+" = ? " ;
-        String[] selectionArgs = {pseudo,"1",pseudo,"1"};
+        String selection = FeedReaderContract.FeedEntry.COLUMN_FRIEND_PSEUDO2+ " = ? AND "  + FeedReaderContract.FeedEntry.COLUMN_FRIEND_FRIEND+" = ? " ;
+        String[] selectionArgs = {pseudo,"1"};
         Cursor cursor = db.query(
                 FeedReaderContract.FeedEntry.TABLE_FRIEND,   // The table to query
                 projection,             // The array of columns to return (pass null to get all)
@@ -286,35 +286,58 @@ public class UserDAO {
                 null,                   // don't filter by row groups
                 null               // The sort order
         );
-        String[] Liste = new String[cursor.getCount()];
+        String[] projection2 = {
+                FeedReaderContract.FeedEntry.COLUMN_FRIEND_PSEUDO2
+
+        };
+        String selection2 = FeedReaderContract.FeedEntry.COLUMN_FRIEND_PSEUDO+ " = ? AND "  + FeedReaderContract.FeedEntry.COLUMN_FRIEND_FRIEND+" = ? " ;
+        String[] selectionArgs2 = {pseudo,"1"};
+        Cursor cursor2 = db.query(
+                FeedReaderContract.FeedEntry.TABLE_FRIEND,   // The table to query
+                projection2,             // The array of columns to return (pass null to get all)
+                selection2,              // The columns for the WHERE clause
+                selectionArgs2,          // The values for the WHERE clause
+                null,                   // don't group the rows
+                null,                   // don't filter by row groups
+                null               // The sort order
+        );
+        String[] Liste = new String[cursor.getCount()+ cursor2.getCount()];
         cursor.moveToFirst();
+        cursor2.moveToFirst();
         int ind=0;
-        while(!cursor.isAfterLast()){
-            String lst =cursor.getString(0);
-            String lst2=cursor.getString(1);
-            if(lst==pseudo){
-                Liste[ind]=lst2;
-                Log.e("ligne", lst2);
-            }
-            else{
+        if (cursor.getCount()!=0){
+            while(!cursor.isAfterLast()){
+                String lst =cursor.getString(0);
                 Liste[ind]=lst;
-                Log.e("ligne", lst);
+                cursor.moveToNext();
+                ind+=1;
             }
-            cursor.moveToNext();
-            ind+=1;
         }
+        if(cursor2.getCount()!=0){
+            while(!cursor2.isAfterLast()){
+                String lst =cursor2.getString(0);
+                Liste[ind]=lst;
+                cursor2.moveToNext();
+                ind+=1;
+            }
+        }
+
         cursor.close();
+        cursor2.close();
         return Liste;
     }
     public boolean friend_request(String pseudo, String pseudo2){
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        try{
         String[] projection = {
                 FeedReaderContract.FeedEntry.COLUMN_FRIEND_FRIEND,
-                FeedReaderContract.FeedEntry.COLUMN_FRIEND_REQUEST,
+                FeedReaderContract.FeedEntry.COLUMN_FRIEND_REQUEST1,
+                FeedReaderContract.FeedEntry.COLUMN_FRIEND_REQUEST2,
+                FeedReaderContract.FeedEntry.COLUMN_FRIEND_PSEUDO,
+                FeedReaderContract.FeedEntry.COLUMN_FRIEND_PSEUDO2
+
         };
-        String selection = FeedReaderContract.FeedEntry.COLUMN_FRIEND_PSEUDO+ " = ? AND " + FeedReaderContract.FeedEntry.COLUMN_FRIEND_PSEUDO2+ " = ? OR " +
-                FeedReaderContract.FeedEntry.COLUMN_FRIEND_PSEUDO+ " = ? AND " + FeedReaderContract.FeedEntry.COLUMN_FRIEND_PSEUDO2 + " = ?";
+        String selection = "(" + FeedReaderContract.FeedEntry.COLUMN_FRIEND_PSEUDO+ " = ? AND " + FeedReaderContract.FeedEntry.COLUMN_FRIEND_PSEUDO2+ " = ?) OR (" +
+                FeedReaderContract.FeedEntry.COLUMN_FRIEND_PSEUDO+ " = ? AND " + FeedReaderContract.FeedEntry.COLUMN_FRIEND_PSEUDO2 + " = ?)";
         String[] selectionArgs = {pseudo, pseudo2, pseudo2, pseudo};
         Cursor cursor = db.query(
                 FeedReaderContract.FeedEntry.TABLE_FRIEND,   // The table to query
@@ -326,25 +349,41 @@ public class UserDAO {
                 null               // The sort order
         );
         cursor.moveToFirst();
-        if (cursor.getInt(0)==0 && cursor.getInt(1)==0){
+        if (cursor.getInt(0)==0 && cursor.getInt(1)==0 && cursor.getInt(2)==0){
             ContentValues values = new ContentValues();
-            values.put(FeedReaderContract.FeedEntry.COLUMN_FRIEND_REQUEST, 1);
-            String selection2 = FeedReaderContract.FeedEntry.COLUMN_FRIEND_REQUEST + " = ?";
-            String[] selectionArgs2= { "0" };
+            if(cursor.getString(4)==pseudo){
+            values.put(FeedReaderContract.FeedEntry.COLUMN_FRIEND_REQUEST1, 1);
+            String selection2 = FeedReaderContract.FeedEntry.COLUMN_FRIEND_REQUEST1 + " = ? AND "+ FeedReaderContract.FeedEntry.COLUMN_FRIEND_FRIEND + " = ? AND "+
+                    FeedReaderContract.FeedEntry.COLUMN_FRIEND_REQUEST2 + " = ? AND "+
+                    FeedReaderContract.FeedEntry.COLUMN_FRIEND_PSEUDO+"= ? AND " + FeedReaderContract.FeedEntry.COLUMN_FRIEND_PSEUDO2+ " = ? ";
+            String[] selectionArgs2= {"0","0","0", pseudo, pseudo2 };
             int count = db.update(
                     FeedReaderContract.FeedEntry.TABLE_FRIEND,
                     values,
                     selection2,
                     selectionArgs2);
+
+        }
+            else{
+                values.put(FeedReaderContract.FeedEntry.COLUMN_FRIEND_REQUEST2, 1);
+                String selection2 = FeedReaderContract.FeedEntry.COLUMN_FRIEND_REQUEST2 + " = ? AND "+ FeedReaderContract.FeedEntry.COLUMN_FRIEND_FRIEND + " = ? AND "+
+                        FeedReaderContract.FeedEntry.COLUMN_FRIEND_REQUEST1 + " = ? AND " +
+                        FeedReaderContract.FeedEntry.COLUMN_FRIEND_PSEUDO+"= ? AND " + FeedReaderContract.FeedEntry.COLUMN_FRIEND_PSEUDO2+ " = ? ";
+                String[] selectionArgs2= {"0","0","0", pseudo2, pseudo };
+                int count = db.update(
+                        FeedReaderContract.FeedEntry.TABLE_FRIEND,
+                        values,
+                        selection2,
+                        selectionArgs2);
+
+            }
             return true;
         }
-        return false;
-        }
-        catch(Exception e){
+        else{
             return false;
         }
+        }
 
-    }
     public String[]  ALL_users(String pseudo){
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         String[] projection = {
@@ -381,7 +420,8 @@ public class UserDAO {
             values.put(FeedReaderContract.FeedEntry.COLUMN_FRIEND_PSEUDO, pseudo);
             values.put(FeedReaderContract.FeedEntry.COLUMN_FRIEND_PSEUDO2, everyUser[i]);
             values.put(FeedReaderContract.FeedEntry.COLUMN_FRIEND_FRIEND, "0");
-            values.put(FeedReaderContract.FeedEntry.COLUMN_FRIEND_REQUEST, "0");
+            values.put(FeedReaderContract.FeedEntry.COLUMN_FRIEND_REQUEST1, "0");
+            values.put(FeedReaderContract.FeedEntry.COLUMN_FRIEND_REQUEST2, "0");
             db.insertWithOnConflict(FeedReaderContract.FeedEntry.TABLE_FRIEND, null, values, SQLiteDatabase.CONFLICT_IGNORE);
         }
 
@@ -389,12 +429,11 @@ public class UserDAO {
     public String[] get_demands(String pseudo){
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         String[] projection = {
-                FeedReaderContract.FeedEntry.COLUMN_FRIEND_PSEUDO2,
-                FeedReaderContract.FeedEntry.COLUMN_FRIEND_PSEUDO,
+                FeedReaderContract.FeedEntry.COLUMN_FRIEND_PSEUDO2
         };
-        String selection = FeedReaderContract.FeedEntry.COLUMN_FRIEND_PSEUDO+ " = ? AND " + FeedReaderContract.FeedEntry.COLUMN_FRIEND_FRIEND+ " = ? AND " +  FeedReaderContract.FeedEntry.COLUMN_FRIEND_REQUEST + " = ? OR "+
-                FeedReaderContract.FeedEntry.COLUMN_FRIEND_PSEUDO2+ " = ? AND "  + FeedReaderContract.FeedEntry.COLUMN_FRIEND_FRIEND+" = ? AND " + FeedReaderContract.FeedEntry.COLUMN_FRIEND_REQUEST + " = ?";
-        String[] selectionArgs = {pseudo,"0","1",pseudo,"0","1"};
+        String selection = FeedReaderContract.FeedEntry.COLUMN_FRIEND_PSEUDO+ " = ? AND " + FeedReaderContract.FeedEntry.COLUMN_FRIEND_FRIEND+ " = ? AND " +
+                FeedReaderContract.FeedEntry.COLUMN_FRIEND_REQUEST1 + " = ? AND " +FeedReaderContract.FeedEntry.COLUMN_FRIEND_REQUEST2 + " = ? ";
+        String[] selectionArgs = {pseudo,"0","0","1"};
         Cursor cursor = db.query(
                 FeedReaderContract.FeedEntry.TABLE_FRIEND,   // The table to query
                 projection,             // The array of columns to return (pass null to get all)
@@ -404,26 +443,60 @@ public class UserDAO {
                 null,                   // don't filter by row groups
                 null               // The sort order
         );
-        String[] Liste = new String[cursor.getCount()];
+        String[] projection2 = {
+                FeedReaderContract.FeedEntry.COLUMN_FRIEND_PSEUDO
+        };
+        String selection2 = FeedReaderContract.FeedEntry.COLUMN_FRIEND_PSEUDO2+ " = ? AND " + FeedReaderContract.FeedEntry.COLUMN_FRIEND_FRIEND+ " = ? AND " +
+                FeedReaderContract.FeedEntry.COLUMN_FRIEND_REQUEST1 + " = ? AND " +FeedReaderContract.FeedEntry.COLUMN_FRIEND_REQUEST2 + " = ? ";
+        String[] selectionArgs2 = {pseudo,"0","1","0"};
+        Cursor cursor2 = db.query(
+                FeedReaderContract.FeedEntry.TABLE_FRIEND,   // The table to query
+                projection2,             // The array of columns to return (pass null to get all)
+                selection2,              // The columns for the WHERE clause
+                selectionArgs2,          // The values for the WHERE clause
+                null,                   // don't group the rows
+                null,                   // don't filter by row groups
+                null               // The sort order
+        );
+        String[] Liste = new String[cursor.getCount()+ cursor2.getCount()];
         cursor.moveToFirst();
+        cursor2.moveToFirst();
         int ind=0;
-        while(!cursor.isAfterLast()){
-            String lst =cursor.getString(0);
-            String lst2=cursor.getString(1);
-            if(lst==pseudo){
-                Liste[ind]=lst2;
-                Log.e("ligne", lst2);
-            }
-            else{
+        if(cursor.getCount()!=0){
+            while(!cursor.isAfterLast()){
+                String lst =cursor.getString(0);
                 Liste[ind]=lst;
-                Log.e("ligne", lst);
+                cursor.moveToNext();
+                ind+=1;
             }
-            cursor.moveToNext();
-            ind+=1;
+        }
+        if(cursor2.getCount()!=0){
+            while(!cursor2.isAfterLast()){
+                String lst =cursor2.getString(0);
+                Liste[ind]=lst;
+                cursor2.moveToNext();
+                ind+=1;}
         }
         cursor.close();
         return Liste;
+        }
+
+    public void accept_friend(String user, String ami){
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(FeedReaderContract.FeedEntry.COLUMN_FRIEND_REQUEST1, 0);
+        values.put(FeedReaderContract.FeedEntry.COLUMN_FRIEND_REQUEST2, 0);
+        values.put(FeedReaderContract.FeedEntry.COLUMN_FRIEND_FRIEND, 1);
+        String selection2 = FeedReaderContract.FeedEntry.COLUMN_FRIEND_PSEUDO + " = ? AND "+FeedReaderContract.FeedEntry.COLUMN_FRIEND_PSEUDO2 + " = ? OR " +
+                FeedReaderContract.FeedEntry.COLUMN_FRIEND_PSEUDO2 + " = ? AND " + FeedReaderContract.FeedEntry.COLUMN_FRIEND_PSEUDO + " = ?";
+        String[] selectionArgs2= {user, ami, user, ami};
+        int count = db.update(
+                FeedReaderContract.FeedEntry.TABLE_FRIEND,
+                values,
+                selection2,
+                selectionArgs2);
     }
 }
+
 
 
