@@ -66,6 +66,7 @@ public class Menu extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent otherActivity = new Intent(getApplicationContext(), Friends.class);
+                otherActivity.putExtra(EXTRA_MESSAGE,pseudo_bis);
                 startActivity(otherActivity);
             }
         });

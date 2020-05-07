@@ -137,7 +137,7 @@ public final class FeedReaderContract {
 
     public static final String Create_friends = "INSERT INTO" + FeedEntry.TABLE_FRIEND +"\n"+
             "VALUES" +
-            "('Bernard', 'Thierry', 'true', 'false'), \n " +
-            "('Thierry', 'Jean', 'true', 'false'), \n " +
-            "('Bernard', 'Ludo', 'false', 'true'), \n " ;
+            "('Bernard', 'Thierry', '1', '0'), \n " +
+            "('Thierry', 'Jean', '1', '0'), \n " +
+            "('Bernard', 'Ludo', '0', '1'), \n " ;
 }

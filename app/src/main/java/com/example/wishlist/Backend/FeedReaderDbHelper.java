@@ -8,6 +8,7 @@ import android.util.Log;
 
 import com.example.wishlist.Backend.FeedReaderContract;
 
+import static com.example.wishlist.Backend.FeedReaderContract.Create_friends;
 import static com.example.wishlist.Backend.FeedReaderContract.Create_items;
 import static com.example.wishlist.Backend.FeedReaderContract.Create_profil;
 import static com.example.wishlist.Backend.FeedReaderContract.Create_user;
@@ -46,6 +47,7 @@ public class FeedReaderDbHelper extends SQLiteOpenHelper {
         db.execSQL(Create_profil);
         db.execSQL(Create_wishlist);
         db.execSQL(Create_items);
+        db.execSQL(Create_friends);
         Log.e("Database operations", "Tables created");
     }
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
