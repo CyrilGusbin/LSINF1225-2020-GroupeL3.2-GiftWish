@@ -17,8 +17,8 @@ public final class FeedReaderContract {
         public static final String TABLE_FRIEND="FRIEND";
         public static final String COLUMN_FRIEND_PSEUDO="PSEUDO";
         public static final String COLUMN_FRIEND_PSEUDO2="PSEUDO_2";
-        public static final Boolean COLUMN_FRIEND_FRIEND = false;
-        public static final Boolean COLUMN_FRIEND_REQUEST = false;
+        public static final String COLUMN_FRIEND_FRIEND = "AMI";
+        public static final String COLUMN_FRIEND_REQUEST = "AMI?";
         public static final String TABLE_ITEM ="ITEM";
         public static final String COLUMN_ITEM_ID="ID";
         public static final String COLUMN_ITEM_WL="WL";

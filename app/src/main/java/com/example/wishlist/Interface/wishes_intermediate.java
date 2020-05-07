@@ -58,9 +58,10 @@ public class wishes_intermediate extends AppCompatActivity {
         Intent intent2=new Intent(this, wishlist_intermediate.class);
         intent2.putExtra(EXTRA_MESSAGE, pseudo);
         Log.e("id", idwl);
-        intent2.putExtra(EXTRA_MESSAGE2, "suppresion effectuée");
+        intent2.putExtra(EXTRA_MESSAGE2, "Suppression effectuée");
         userDao.delete_wl(idwl);
         startActivity(intent2);
+        finish();
 
     }
 

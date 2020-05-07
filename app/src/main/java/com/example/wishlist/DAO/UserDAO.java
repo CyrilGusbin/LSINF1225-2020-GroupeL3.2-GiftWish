@@ -4,13 +4,14 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.util.Log;
 
 import com.example.wishlist.Backend.FeedReaderContract;
 import com.example.wishlist.Backend.FeedReaderDbHelper;
+import com.example.wishlist.Backend.ImageToBlob;
 import com.example.wishlist.Backend.USER;
-
-import java.util.ArrayList;
 
 
 public class UserDAO {
@@ -258,8 +259,15 @@ public class UserDAO {
         String[] selectionArgs2={idwl};
         int deletedRows = db.delete(FeedReaderContract.FeedEntry.TABLE_WL, selection2, selectionArgs2);
         db.close();
+    }
 
-
+    public void updateProfilePicture(Bitmap profilePicture){
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("Photo", ImageToBlob.getBytes(profilePicture));
+        String selection = " LIKE? ";
+        String[]selectionArg = {String.valueOf(profilePicture)};
+        db.update("TABLE_PROFILE", values, selection, selectionArg);
     }
     public String[] get_friendlist(String pseudo){
         SQLiteDatabase db = dbHelper.getWritableDatabase();
