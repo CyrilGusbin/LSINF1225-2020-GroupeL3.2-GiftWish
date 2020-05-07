@@ -26,7 +26,6 @@ public class wishlist_intermediate extends AppCompatActivity {
         final String msg =intent2.getStringExtra(Create_wislist.EXTRA_MESSAGE2);
         TextView reussite = findViewById(R.id.wl_created);
         reussite.setText(msg);
-        textView.setText("Wishlists de "+pseudo_bis);
     }
     public void go_to_wishlists(View view){
         Intent intent= new Intent(this, WishLists.class);

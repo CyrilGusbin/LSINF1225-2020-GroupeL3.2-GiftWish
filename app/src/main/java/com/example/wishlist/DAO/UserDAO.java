@@ -211,5 +211,55 @@ public class UserDAO {
         }
         return true;
     }
+    public void delete_item(String iid){
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        String selection = FeedReaderContract.FeedEntry.COLUMN_ITEM_ID + " = ?";
+        String[] selectionArgs={iid};
+        int deletedRows = db.delete(FeedReaderContract.FeedEntry.TABLE_ITEM, selection, selectionArgs);
+
+
+    }
+    public void delete_wl(String idwl){
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        String[] projection = {
+                FeedReaderContract.FeedEntry.COLUMN_ITEM_ID
+
+        };
+        String selection = FeedReaderContract.FeedEntry.COLUMN_ITEM_IDWL+ " = ?";
+        String[] selectionArgs = {idwl};
+        Cursor cursor = db.query(
+                FeedReaderContract.FeedEntry.TABLE_ITEM,   // The table to query
+                projection,             // The array of columns to return (pass null to get all)
+                selection,              // The columns for the WHERE clause
+                selectionArgs,          // The values for the WHERE clause
+                null,                   // don't group the rows
+                null,                   // don't filter by row groups
+                null               // The sort order
+        );
+        String[] Liste = new String[cursor.getCount()];
+        int e=cursor.getCount();
+        cursor.moveToFirst();
+        int ind=0;
+        while(!cursor.isAfterLast()){
+            String lst =cursor.getString(0);
+            Liste[ind]=lst;
+            cursor.moveToNext();
+            ind+=1;
+        }
+        cursor.close();
+        int i=0;
+        while(i<e){
+            Log.e("item", Liste[i]);
+            delete_item(Liste[i]);
+            i+=1;
+            Log.e("delete", "line");
+        }
+        String selection2 = FeedReaderContract.FeedEntry.COLUMN_WL_IDWL+ " = ?";
+        String[] selectionArgs2={idwl};
+        int deletedRows = db.delete(FeedReaderContract.FeedEntry.TABLE_WL, selection2, selectionArgs2);
+        db.close();
+
+
+    }
 }
 
