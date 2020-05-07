@@ -33,6 +33,7 @@ public class wishlist_intermediate extends AppCompatActivity {
         final String pseudo_bis = intent2.getStringExtra(EXTRA_MESSAGE);
         intent.putExtra(EXTRA_MESSAGE, pseudo_bis);
         startActivity(intent);
+        finish();
     }
     public void go_to_create_wishlist(View view){
         Intent intent= new Intent(this, Create_wislist.class);
@@ -40,5 +41,6 @@ public class wishlist_intermediate extends AppCompatActivity {
         final String pseudo_bis = intent2.getStringExtra(EXTRA_MESSAGE);
         intent.putExtra(EXTRA_MESSAGE, pseudo_bis);
         startActivity(intent);
+        finish();
     }
 }

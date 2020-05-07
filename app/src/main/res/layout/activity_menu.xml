@@ -30,7 +30,7 @@
         android:width="@android:dimen/thumbnail_width"
         android:background="@drawable/circle_button"
         android:backgroundTint="@color/colorAccent"
-        android:text="Produits"
+        android:text="WishLists de mes amis"
         android:textColor="@color/Blanc"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

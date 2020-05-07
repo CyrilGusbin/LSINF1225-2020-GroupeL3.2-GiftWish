@@ -5,9 +5,9 @@ package com.example.wishlist.Interface;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.Manifest;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Button;
 
+import com.example.wishlist.DAO.UserDAO;
 import com.example.wishlist.R;
 
 import java.io.File;
@@ -27,6 +28,7 @@ public class Profile extends AppCompatActivity {
 
     private static final int REQUEST_GET_SINGLE_FILE = 1 ;
     private Button play;
+    UserDAO userDAO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,9 +44,7 @@ public class Profile extends AppCompatActivity {
         textView.setText(message);
 
         //Ouvre notre galerie photo, nous permettant de choisir une photo.
-        //TODO : Pouvoir mettre à jour l'interface avec la nouvelle photo
         //TODO : Enegistrer l'image dans la base de donnée
-        //TODO : Améliorer stablilité
         this.play = findViewById(R.id.edit_photo);
         play.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,6 +54,8 @@ public class Profile extends AppCompatActivity {
                 intent.addCategory(Intent.CATEGORY_OPENABLE);
                 intent.setType("image/*");
                 startActivityForResult(Intent.createChooser(intent, "Select Picture"),REQUEST_GET_SINGLE_FILE);
+                //Bitmap profilePicture = ;
+                //userDAO.updateProfilePicture(profilePicture);
             }
         });
 
@@ -80,6 +82,8 @@ public class Profile extends AppCompatActivity {
             }
         });
     }
+
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -96,6 +100,7 @@ public class Profile extends AppCompatActivity {
                     // Set the image in ImageView
                     ImageView photo = findViewById(R.id.photo_user);
                     photo.setImageURI(selectedImageUri);
+                    Uri profilePicture = selectedImageUri;
                 }
             }
         } catch (Exception e) {

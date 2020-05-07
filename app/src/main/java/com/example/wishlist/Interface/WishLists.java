@@ -58,6 +58,7 @@ public class WishLists extends AppCompatActivity {
         intent2.putExtra(EXTRA_MESSAGE2,nomWL);
         intent2.putExtra(EXTRA_MESSAGE3, pseudo_bis);
         startActivity(intent2);
+        finish();
     }
 }
 
