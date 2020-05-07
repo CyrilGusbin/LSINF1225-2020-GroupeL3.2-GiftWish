@@ -53,18 +53,25 @@ public class Register extends AppCompatActivity {
         Intent intent2 = new Intent(this, Register.class);
         EditText pseudo = (EditText) findViewById(R.id.pseudo);
         EditText mdp = (EditText) findViewById(R.id.MDP);
-        String pseudo_bis= pseudo.getText().toString();
-        String mdp_bis= mdp.getText().toString();
-        if(userDao.AddUserDB(pseudo_bis, mdp_bis)){
-            userDao.connection_all_other_users(pseudo_bis);
-            intent.putExtra(EXTRA_MESSAGE, pseudo_bis);
-            startActivity(intent);
-        }
-        else{
-            intent2.putExtra(EXTRA_MESSAGE, "Pseudo déjà utilisé");
+        EditText cmdp = (EditText) findViewById(R.id.CMDP);
+        if (cmdp != mdp){
+            intent2.putExtra(EXTRA_MESSAGE, "les deux mots de passe doivent correspondre");
             startActivity(intent2);
             finish();
+        }
+        else {
+            String pseudo_bis = pseudo.getText().toString();
+            String mdp_bis = mdp.getText().toString();
+            if (userDao.AddUserDB(pseudo_bis, mdp_bis)) {
+                userDao.connection_all_other_users(pseudo_bis);
+                intent.putExtra(EXTRA_MESSAGE, pseudo_bis);
+                startActivity(intent);
+            } else {
+                intent2.putExtra(EXTRA_MESSAGE, "Pseudo déjà utilisé");
+                startActivity(intent2);
+                finish();
 
+            }
         }
     }
 }
