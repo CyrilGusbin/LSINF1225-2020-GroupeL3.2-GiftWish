@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -54,19 +55,20 @@ public class Register extends AppCompatActivity {
         EditText pseudo = (EditText) findViewById(R.id.pseudo);
         EditText mdp = (EditText) findViewById(R.id.MDP);
         EditText cmdp = (EditText) findViewById(R.id.CMDP);
-        if (cmdp != mdp){
+        String pseudo_bis = pseudo.getText().toString();
+        String mdp_bis = mdp.getText().toString();
+        String cmdp_bis = cmdp.getText().toString();
+        if (!cmdp_bis.equals(mdp_bis)){
             intent2.putExtra(EXTRA_MESSAGE, "les deux mots de passe doivent correspondre");
             startActivity(intent2);
             finish();
         }
         else {
-            String pseudo_bis = pseudo.getText().toString();
-            String mdp_bis = mdp.getText().toString();
             if (userDao.AddUserDB(pseudo_bis, mdp_bis)) {
                 userDao.connection_all_other_users(pseudo_bis);
                 intent.putExtra(EXTRA_MESSAGE, pseudo_bis);
-                startActivity(intent);
-            } else {
+                startActivity(intent); }
+            else {
                 intent2.putExtra(EXTRA_MESSAGE, "Pseudo déjà utilisé");
                 startActivity(intent2);
                 finish();
