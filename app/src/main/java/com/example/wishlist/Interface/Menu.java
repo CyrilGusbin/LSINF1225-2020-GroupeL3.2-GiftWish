@@ -65,7 +65,7 @@ public class Menu extends AppCompatActivity {
         play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent otherActivity = new Intent(getApplicationContext(), Friends.class);
+                Intent otherActivity = new Intent(getApplicationContext(), friends_intermediate.class);
                 otherActivity.putExtra(EXTRA_MESSAGE,pseudo_bis);
                 startActivity(otherActivity);
             }

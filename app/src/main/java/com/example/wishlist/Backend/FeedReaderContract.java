@@ -139,5 +139,6 @@ public final class FeedReaderContract {
             "VALUES" +
             "('User1', 'User2', '1', '0'), \n " +
             "('User1', 'User3', '0', '0'), \n " +
-            "('User1', 'User4', '1', '0');" ;
+            "('User1', 'User5', '0', '0'), \n " +
+            "('User1', 'User4', '0', '0');" ;
 }

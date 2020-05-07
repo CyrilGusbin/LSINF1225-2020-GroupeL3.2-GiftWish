@@ -306,5 +306,44 @@ public class UserDAO {
         cursor.close();
         return Liste;
     }
+    public boolean friend_request(String pseudo, String pseudo2){
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        try{
+        String[] projection = {
+                FeedReaderContract.FeedEntry.COLUMN_FRIEND_FRIEND,
+                FeedReaderContract.FeedEntry.COLUMN_FRIEND_REQUEST,
+        };
+        String selection = FeedReaderContract.FeedEntry.COLUMN_FRIEND_PSEUDO+ " = ? AND " + FeedReaderContract.FeedEntry.COLUMN_FRIEND_PSEUDO2+ " = ? OR " +
+                FeedReaderContract.FeedEntry.COLUMN_FRIEND_PSEUDO+ " = ? AND " + FeedReaderContract.FeedEntry.COLUMN_FRIEND_PSEUDO2 + " = ?";
+        String[] selectionArgs = {pseudo, pseudo2, pseudo2, pseudo};
+        Cursor cursor = db.query(
+                FeedReaderContract.FeedEntry.TABLE_FRIEND,   // The table to query
+                projection,             // The array of columns to return (pass null to get all)
+                selection,              // The columns for the WHERE clause
+                selectionArgs,          // The values for the WHERE clause
+                null,                   // don't group the rows
+                null,                   // don't filter by row groups
+                null               // The sort order
+        );
+        cursor.moveToFirst();
+        if (cursor.getInt(0)==0 && cursor.getInt(1)==0){
+            ContentValues values = new ContentValues();
+            values.put(FeedReaderContract.FeedEntry.COLUMN_FRIEND_REQUEST, 1);
+            String selection2 = FeedReaderContract.FeedEntry.COLUMN_FRIEND_REQUEST + " = ?";
+            String[] selectionArgs2= { "0" };
+            int count = db.update(
+                    FeedReaderContract.FeedEntry.TABLE_FRIEND,
+                    values,
+                    selection2,
+                    selectionArgs2);
+            return true;
+        }
+        return false;
+        }
+        catch(Exception e){
+            return false;
+        }
+
+    }
 }
 
