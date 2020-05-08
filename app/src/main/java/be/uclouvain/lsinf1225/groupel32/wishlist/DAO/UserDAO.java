@@ -210,6 +210,26 @@ public class UserDAO {
         }
         return true;
     }
+    public String get_item_id(String name, String idwl){
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        String[] projection = {
+                FeedReaderContract.FeedEntry.COLUMN_ITEM_ID
+        };
+        String selection = FeedReaderContract.FeedEntry.COLUMN_ITEM_IDWL+ " = ? AND " + FeedReaderContract.FeedEntry.COLUMN_ITEM_NOM + " = ?";
+        String[] selectionArgs = {idwl, name};
+        Cursor cursor = db.query(
+                FeedReaderContract.FeedEntry.TABLE_ITEM,   // The table to query
+                projection,             // The array of columns to return (pass null to get all)
+                selection,              // The columns for the WHERE clause
+                selectionArgs,          // The values for the WHERE clause
+                null,                   // don't group the rows
+                null,                   // don't filter by row groups
+                null               // The sort order
+        );
+        cursor.moveToFirst();
+        String lst= cursor.getString(0);
+        return lst;
+    }
     public void delete_item(String iid){
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         String selection = FeedReaderContract.FeedEntry.COLUMN_ITEM_ID + " = ?";
@@ -221,7 +241,6 @@ public class UserDAO {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         String[] projection = {
                 FeedReaderContract.FeedEntry.COLUMN_ITEM_ID
-
         };
         String selection = FeedReaderContract.FeedEntry.COLUMN_ITEM_IDWL+ " = ?";
         String[] selectionArgs = {idwl};
@@ -620,6 +639,36 @@ public class UserDAO {
             cursor.moveToNext();
             ind+=1;
         }
+        cursor.close();
+        return Liste;
+    }
+    public String[] get_item_info(String item, String idwl){
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        String[] projection = {
+                FeedReaderContract.FeedEntry.COLUMN_ITEM_NOM,
+                FeedReaderContract.FeedEntry.COLUMN_ITEM_DESCRIPTION,
+                FeedReaderContract.FeedEntry.COLUMN_ITEM_PRIX,
+                FeedReaderContract.FeedEntry.COLUMN_ITEM_ETAT
+        };
+        String selection = FeedReaderContract.FeedEntry.COLUMN_ITEM_IDWL+ " = ? AND " +FeedReaderContract.FeedEntry.COLUMN_ITEM_NOM + " = ?";
+        String[] selectionArgs = {idwl, item};
+        Cursor cursor = db.query(
+                FeedReaderContract.FeedEntry.TABLE_ITEM,   // The table to query
+                projection,             // The array of columns to return (pass null to get all)
+                selection,              // The columns for the WHERE clause
+                selectionArgs,          // The values for the WHERE clause
+                null,                   // don't group the rows
+                null,                   // don't filter by row groups
+                null               // The sort order
+        );
+        String[] Liste= new String[cursor.getColumnCount()];
+        cursor.moveToFirst();
+        Liste[0]= cursor.getString(0);
+        Liste[1]= cursor.getString(1);
+        Log.e(Liste[0], Liste[1]);
+        Liste[2]= cursor.getString(2);
+        Liste[3]= cursor.getString(3);
+        Log.e(Liste[2], Liste[3]);
         cursor.close();
         return Liste;
     }

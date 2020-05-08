@@ -19,6 +19,8 @@
         android:layout_height="100dp"
         android:layout_alignParentTop="true"
         android:text="TextView"
+        android:clickable="true"
+        android:onClick="open_item"
         android:textColor="@color/Noir"
         android:textSize="40sp"
         android:textStyle="bold" />

@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Interface.inalterable_wishlist"></activity>
+        <activity android:name=".Interface.show_item"></activity>
         <activity android:name=".Interface.friend_item_creation" />
         <activity android:name=".Interface.WishesFriend" />
         <activity android:name=".Backend.MyAdapterWishesFriend" />
