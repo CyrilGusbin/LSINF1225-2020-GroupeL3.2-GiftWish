@@ -4,14 +4,19 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 
+import be.uclouvain.lsinf1225.groupel32.wishlist.Backend.wishlist_intermediate;
 import be.uclouvain.lsinf1225.groupel32.wishlist.R;
 
 import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
 public class EditProfile extends AppCompatActivity {
+
+    private Button play;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,5 +27,17 @@ public class EditProfile extends AppCompatActivity {
         String message = intent.getStringExtra(EXTRA_MESSAGE);
         TextView textView = findViewById(R.id.loadPseudo);
         textView.setText("Votre Pseudo actuel : "+ message);
+
+        this.play = findViewById(R.id.set_preferences);
+
+        play.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent otherActivity = new Intent(getApplicationContext(), Preferences.class);
+                startActivity(otherActivity);
+            }
+        });
+
+
     }
 }

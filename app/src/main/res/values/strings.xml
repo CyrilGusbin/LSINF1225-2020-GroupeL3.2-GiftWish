@@ -15,4 +15,27 @@
     <string name="warning_message">Êtes-vous sûr de vouloir supprimer votre compte ? Cette action est irréversible et entrainera la suppression immédiate de toutes vos données.</string>
     <string name="ajout_wishlist"> Créer wishlist</string>
     <string name="liste_wishlist"> Ma liste de wishlist</string>
+
+    <string-array name="taille_vêtement">
+    <item>XS</item>
+    <item>S</item>
+    <item>M</item>
+    <item>L</item>
+    <item>XL</item>
+    <item>XXL</item>
+    <item>XXXL</item>
+    </string-array>
+
+    <string-array name="couleur">
+        <item>Blanc</item>
+        <item>Bleu</item>
+        <item>Brun</item>
+        <item>Gris</item>
+        <item>Jaune</item>
+        <item>Noir</item>
+        <item>Rose</item>
+        <item>Rouge</item>
+        <item>Vert</item>
+        <item>Violet</item>
+    </string-array>
 </resources>
