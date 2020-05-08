@@ -135,12 +135,17 @@ public final class FeedReaderContract {
     public static final String Create_friends = "INSERT INTO " + FeedEntry.TABLE_FRIEND +"\n"+
             "VALUES" +
             "('User1', 'User2', '1', '0', '0'), \n " +
-            "('User1', 'User3', '0', '1', '0'), \n " +
+            "('User1', 'User3', '1', '0', '0'), \n " +
             "('User2', 'User3', '0', '0', '0'), \n " +
             "('User2', 'User5', '0', '0', '0'), \n " +
             "('User2', 'User4', '0', '0', '0'), \n " +
             "('User3', 'User4', '0', '0', '0'), \n " +
             "('User3', 'User5', '0', '0', '0'), \n " +
             "('User4', 'User5', '0', '1', '0'), \n " +
-            "('User1', 'User4', '0', '0', '1');" ;
+            "('User1', 'User4', '1', '0', '0');" ;
+    public static final String Create_autorisation = "INSERT INTO "+ FeedEntry.TABLE_AUTORISATION + "\n" +
+            "VALUES"+
+            "('User2', '1', '1'), \n " +
+            "('User3', '0', '1'), \n " +
+            "('User3', '2', '1');";
 }

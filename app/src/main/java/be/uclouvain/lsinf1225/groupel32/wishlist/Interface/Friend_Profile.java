@@ -32,9 +32,19 @@ public class Friend_Profile extends AppCompatActivity {
         String pseudo_friend=intent.getStringExtra(Friends.EXTRA_MESSAGE2);
         String my_pseudo = intent.getStringExtra(EXTRA_MESSAGE);
         userDao.delete_friend(my_pseudo, pseudo_friend);
-        Intent intent2=new Intent(this, Menu.class);
+        Intent intent2=new Intent(this, friends_intermediate.class);
         intent2.putExtra(EXTRA_MESSAGE2,"ami supprimé");
         intent.putExtra(EXTRA_MESSAGE, my_pseudo);
+        startActivity(intent2);
+    }
+    public void open_friend_wishlist(View view){
+        userDao= new UserDAO(activity);
+        Intent intent=getIntent();
+        String pseudo_friend=intent.getStringExtra(Friends.EXTRA_MESSAGE2);
+        String my_pseudo = intent.getStringExtra(EXTRA_MESSAGE);
+        Intent intent2= new Intent(this, friend_wishlists.class);
+        intent2.putExtra(EXTRA_MESSAGE, my_pseudo);
+        intent2.putExtra(EXTRA_MESSAGE2, pseudo_friend);
         startActivity(intent2);
     }
 

@@ -215,7 +215,7 @@ public class UserDAO {
         String selection = FeedReaderContract.FeedEntry.COLUMN_ITEM_ID + " = ?";
         String[] selectionArgs={iid};
         int deletedRows = db.delete(FeedReaderContract.FeedEntry.TABLE_ITEM, selection, selectionArgs);
-
+        db.close();
 
     }
     public void delete_wl(String idwl){
@@ -314,6 +314,7 @@ public class UserDAO {
 
         cursor.close();
         cursor2.close();
+        db.close();
         return Liste;
     }
 
@@ -341,6 +342,7 @@ public class UserDAO {
         ContentValues cv = new  ContentValues();
         cv.put("Photo", profilePicture);
         db.insert(FeedReaderContract.FeedEntry.TABLE_PROFIL, null, cv );
+        db.close();
     }
 
 
@@ -395,8 +397,12 @@ public class UserDAO {
                             selectionArgs2);
 
                 }
+                cursor.close();
+                db.close();
                 return true;
             } else {
+                cursor.close();
+                db.close();
                 return false;
             }
         }
@@ -431,6 +437,7 @@ public class UserDAO {
             ind+=1;
         }
         cursor.close();
+        db.close();
         return Liste;
     }
     public void connection_all_other_users(String pseudo){
@@ -445,6 +452,7 @@ public class UserDAO {
             values.put(FeedReaderContract.FeedEntry.COLUMN_FRIEND_REQUEST2, "0");
             db.insertWithOnConflict(FeedReaderContract.FeedEntry.TABLE_FRIEND, null, values, SQLiteDatabase.CONFLICT_IGNORE);
         }
+        db.close();
 
     }
     public String[] get_demands(String pseudo){
@@ -499,6 +507,8 @@ public class UserDAO {
                 ind+=1;}
         }
         cursor.close();
+        cursor2.close();
+        db.close();
         return Liste;
         }
 
@@ -516,6 +526,7 @@ public class UserDAO {
                 values,
                 selection2,
                 selectionArgs2);
+        db.close();
     }
     public void delete_friend(String user, String ami){
         SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -531,6 +542,93 @@ public class UserDAO {
                 values,
                 selection2,
                 selectionArgs2);
+        db.close();
+    }
+    public boolean authorized(String pseudo, String id){
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        String[] projection = {
+                FeedReaderContract.FeedEntry.COLUMN_AUTORISATION_EDIT
+        };
+        String selection = FeedReaderContract.FeedEntry.COLUMN_AUTORISATION_PSEUDO+ " = ? AND " + FeedReaderContract.FeedEntry.COLUMN_AUTORISATION_IDWL+ " = ?";
+        String[] selectionArgs = {pseudo, id};
+        Cursor cursor = db.query(
+                FeedReaderContract.FeedEntry.TABLE_AUTORISATION,   // The table to query
+                projection,             // The array of columns to return (pass null to get all)
+                selection,              // The columns for the WHERE clause
+                selectionArgs,          // The values for the WHERE clause
+                null,                   // don't group the rows
+                null,                   // don't filter by row groups
+                null               // The sort order
+        );
+        cursor.moveToFirst();
+        if(cursor.getInt(0)==1){
+            cursor.close();
+            db.close();
+            return true;
+        }
+        else{
+            cursor.close();
+            db.close();
+            return false;
+        }
+    }
+    public boolean modifiable_wl(String pseudo, String id){
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        String[] projection = {
+                FeedReaderContract.FeedEntry.COLUMN_WL_EDIT
+        };
+        String selection = FeedReaderContract.FeedEntry.COLUMN_WL_PSEUDO+ " = ? AND " + FeedReaderContract.FeedEntry.COLUMN_WL_IDWL+ " = ?";
+        String[] selectionArgs = {pseudo, id};
+        Cursor cursor = db.query(
+                FeedReaderContract.FeedEntry.TABLE_WL,   // The table to query
+                projection,             // The array of columns to return (pass null to get all)
+                selection,              // The columns for the WHERE clause
+                selectionArgs,          // The values for the WHERE clause
+                null,                   // don't group the rows
+                null,                   // don't filter by row groups
+                null               // The sort order
+        );
+        cursor.moveToFirst();
+        if(cursor.getInt(0)==1){
+            cursor.close();
+            db.close();
+            return true;
+        }
+        else{
+            cursor.close();
+            db.close();
+            return false;
+        }
+    }
+    public String[] get_wishes_friend(String id){
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        String[] projection = {
+                FeedReaderContract.FeedEntry.COLUMN_ITEM_NOM
+
+        };
+        Log.e(FeedReaderContract.FeedEntry.COLUMN_ITEM_NOM, "truc");
+        String selection = FeedReaderContract.FeedEntry.COLUMN_ITEM_IDWL+ " = ?";
+        String[] selectionArgs = {id};
+        Cursor cursor = db.query(
+                FeedReaderContract.FeedEntry.TABLE_ITEM,   // The table to query
+                projection,             // The array of columns to return (pass null to get all)
+                selection,              // The columns for the WHERE clause
+                selectionArgs,          // The values for the WHERE clause
+                null,                   // don't group the rows
+                null,                   // don't filter by row groups
+                null               // The sort order
+        );
+        String[] Liste = new String[cursor.getCount()];
+        cursor.moveToFirst();
+        int ind=0;
+        while(!cursor.isAfterLast()){
+            String lst =cursor.getString(0);
+            Liste[ind]=lst;
+            cursor.moveToNext();
+            ind+=1;
+        }
+        cursor.close();
+        return Liste;
     }
 }
 

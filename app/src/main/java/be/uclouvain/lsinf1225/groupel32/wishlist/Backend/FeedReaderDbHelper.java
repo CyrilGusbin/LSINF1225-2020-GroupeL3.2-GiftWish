@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import static be.uclouvain.lsinf1225.groupel32.wishlist.Backend.FeedReaderContract.Create_autorisation;
 import static be.uclouvain.lsinf1225.groupel32.wishlist.Backend.FeedReaderContract.Create_friends;
 import static be.uclouvain.lsinf1225.groupel32.wishlist.Backend.FeedReaderContract.Create_items;
 import static be.uclouvain.lsinf1225.groupel32.wishlist.Backend.FeedReaderContract.Create_profil;
@@ -25,7 +26,7 @@ import static be.uclouvain.lsinf1225.groupel32.wishlist.Backend.FeedReaderContra
 import static be.uclouvain.lsinf1225.groupel32.wishlist.Backend.FeedReaderContract.SQL_DELETE_ENTRIES6;
 import static be.uclouvain.lsinf1225.groupel32.wishlist.Backend.FeedReaderContract.SQL_DELETE_ENTRIES7;
 public class FeedReaderDbHelper extends SQLiteOpenHelper {
-    public static final int DATABASE_VERSION = 23;
+    public static final int DATABASE_VERSION = 25;
     public static final String DATABASE_NAME = "FeedReader.db";
     private SQLiteDatabase db;
     public FeedReaderDbHelper(Context context) {
@@ -50,6 +51,7 @@ public class FeedReaderDbHelper extends SQLiteOpenHelper {
         db.execSQL(Create_wishlist);
         db.execSQL(Create_items);
         db.execSQL(Create_friends);
+        db.execSQL(Create_autorisation);
         Log.e("Database operations", "Tables created");
     }
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {

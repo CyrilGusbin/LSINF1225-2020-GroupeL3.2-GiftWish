@@ -36,6 +36,7 @@ public class wishes_intermediate extends AppCompatActivity {
     public void go_to_items(View view){
         Intent intent= getIntent();
         String idwl= intent.getStringExtra(EXTRA_MESSAGE);
+        Log.e(idwl, "truc");
         Intent intent2= new Intent(this, Wishes.class);
         intent2.putExtra(EXTRA_MESSAGE, idwl);
         startActivity(intent2);
@@ -44,10 +45,9 @@ public class wishes_intermediate extends AppCompatActivity {
     public void go_to_item_creation(View view){
         Intent intent= getIntent();
         String idwl= intent.getStringExtra(EXTRA_MESSAGE);
-        Intent intent3=getIntent();
-        String pseudo =intent3.getStringExtra(WishLists.EXTRA_MESSAGE3);
+        String pseudo =intent.getStringExtra(WishLists.EXTRA_MESSAGE3);
         Intent intent2= new Intent(this, item_creation.class);
-        intent2.putExtra(EXTRA_MESSAGE, pseudo);
+        intent2.putExtra(EXTRA_MESSAGE, idwl);
         startActivity(intent2);
         finish();
 
