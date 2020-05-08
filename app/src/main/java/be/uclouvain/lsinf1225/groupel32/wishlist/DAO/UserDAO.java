@@ -355,8 +355,8 @@ public class UserDAO {
                     FeedReaderContract.FeedEntry.COLUMN_FRIEND_PSEUDO2
 
             };
-            String selection = "(" + FeedReaderContract.FeedEntry.COLUMN_FRIEND_PSEUDO + " = ? AND " + FeedReaderContract.FeedEntry.COLUMN_FRIEND_PSEUDO2 + " = ?) OR (" +
-                    FeedReaderContract.FeedEntry.COLUMN_FRIEND_PSEUDO + " = ? AND " + FeedReaderContract.FeedEntry.COLUMN_FRIEND_PSEUDO2 + " = ?)";
+            String selection = FeedReaderContract.FeedEntry.COLUMN_FRIEND_PSEUDO + " = ? AND " + FeedReaderContract.FeedEntry.COLUMN_FRIEND_PSEUDO2 + " = ? OR " +
+                    FeedReaderContract.FeedEntry.COLUMN_FRIEND_PSEUDO + " = ? AND " + FeedReaderContract.FeedEntry.COLUMN_FRIEND_PSEUDO2 + " = ?";
             String[] selectionArgs = {pseudo, pseudo2, pseudo2, pseudo};
             Cursor cursor = db.query(
                     FeedReaderContract.FeedEntry.TABLE_FRIEND,   // The table to query
@@ -370,7 +370,7 @@ public class UserDAO {
             cursor.moveToFirst();
             if (cursor.getInt(0) == 0 && cursor.getInt(1) == 0 && cursor.getInt(2) == 0) {
                 ContentValues values = new ContentValues();
-                if (cursor.getString(3) == pseudo) {
+                if (cursor.getString(3).equals(pseudo)) {
                     values.put(FeedReaderContract.FeedEntry.COLUMN_FRIEND_REQUEST1, 1);
                     String selection2 = FeedReaderContract.FeedEntry.COLUMN_FRIEND_REQUEST1 + " = ? AND " + FeedReaderContract.FeedEntry.COLUMN_FRIEND_FRIEND + " = ? AND " +
                             FeedReaderContract.FeedEntry.COLUMN_FRIEND_REQUEST2 + " = ? AND " +
@@ -395,6 +395,7 @@ public class UserDAO {
                             selectionArgs2);
 
                 }
+                db.close();
                 return true;
             } else {
                 return false;
