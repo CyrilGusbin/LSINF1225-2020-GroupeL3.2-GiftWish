@@ -3,6 +3,7 @@
 
 package com.example.wishlist.Interface;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,13 +16,10 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 
-import com.example.wishlist.Backend.Article;
 import com.example.wishlist.Backend.DBManager;
 import com.example.wishlist.Backend.USER;
 import com.example.wishlist.DAO.UserDAO;
 import com.example.wishlist.R;
-
-import java.util.List;
 
 import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
@@ -43,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        final Context context = this;
 
         //Lorsque l'on clique sur le bouton "S'inscrire", l'application nous déplace vers l'interface d'inscription."
         this.play = findViewById(R.id.inscription2);
@@ -64,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent otherActivity = new Intent(getApplicationContext(), Menu.class);
                 Intent resetActivity = new Intent(getApplicationContext(), MainActivity.class);
 
-                USER user = new USER();
+                USER user = new USER(context);
                 EditText pseudo = findViewById(R.id.pseudo);
                 EditText mdp = findViewById(R.id.mdp);
                 String pseudo_bis= pseudo.getText().toString();

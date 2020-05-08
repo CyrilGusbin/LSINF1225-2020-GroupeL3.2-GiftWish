@@ -8,6 +8,10 @@ import android.util.Log;
 
 import com.example.wishlist.Backend.FeedReaderContract;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 import static com.example.wishlist.Backend.FeedReaderContract.Create_friends;
 import static com.example.wishlist.Backend.FeedReaderContract.Create_items;
 import static com.example.wishlist.Backend.FeedReaderContract.Create_profil;
@@ -31,10 +35,16 @@ import static com.example.wishlist.Backend.FeedReaderContract.SQL_DELETE_ENTRIES
 public class FeedReaderDbHelper extends SQLiteOpenHelper {
     public static final int DATABASE_VERSION = 22;
     public static final String DATABASE_NAME = "FeedReader.db";
+    private SQLiteDatabase db;
     public FeedReaderDbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
 
     }
+
+    public SQLiteDatabase getDb(){
+        return this.db;
+    }
+
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(SQL_CREATE_ENTRIES5);
         db.execSQL(SQL_CREATE_ENTRIES);

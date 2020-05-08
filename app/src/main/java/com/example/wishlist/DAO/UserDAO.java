@@ -4,8 +4,8 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.graphics.Bitmap;
-import android.net.Uri;
 import android.util.Log;
 
 import com.example.wishlist.Backend.FeedReaderContract;
@@ -261,14 +261,6 @@ public class UserDAO {
         db.close();
     }
 
-    public void updateProfilePicture(Bitmap profilePicture){
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put("Photo", ImageToBlob.getBytes(profilePicture));
-        String selection = " LIKE? ";
-        String[]selectionArg = {String.valueOf(profilePicture)};
-        db.update("TABLE_PROFILE", values, selection, selectionArg);
-    }
     public String[] get_friendlist(String pseudo){
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         String[] projection = {
@@ -326,6 +318,34 @@ public class UserDAO {
         cursor2.close();
         return Liste;
     }
+
+    //public void updatePseudoUser(String pseudo_user){
+        //SQLiteDatabase db = dbHelper.getWritableDatabase();
+        //ContentValues values = new ContentValues();
+        //values.put(FeedReaderContract.FeedEntry.COLUMN_ITEM_ID, IID);
+        //String selection = FeedReaderContract.FeedEntry.COLUMN_ITEM_IDWL+ " = ?";
+        //Bitmap[]selectionArg = {String.valueOf(profilePicture)};
+        //db.update("TABLE_PROFILE", values, selection, selectionArg);
+    //}
+
+    //public void updateProfilePicture(Bitmap profilePicture){
+    //SQLiteDatabase db = dbHelper.getWritableDatabase();
+    //ContentValues values = new ContentValues();
+    //profilePicture = ImageToBlob.getBytes(profilePicture);
+    //values.put("Photo", ImageToBlob.getBytes(profilePicture));
+    //String selection = FeedReaderContract.FeedEntry.COLUMN_PROFIL_PHOTO+ " = ?";
+    //String[]selectionArg = {profilePicture};
+    //db.update("TABLE_PROFILE", values, selection, selectionArg);
+    //}
+
+    public void updateProfilePicture(byte[] profilePicture) throws SQLiteException {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues cv = new  ContentValues();
+        cv.put("Photo", profilePicture);
+        db.insert(FeedReaderContract.FeedEntry.TABLE_PROFIL, null, cv );
+    }
+
+
     public boolean friend_request(String pseudo, String pseudo2){
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         String[] projection = {

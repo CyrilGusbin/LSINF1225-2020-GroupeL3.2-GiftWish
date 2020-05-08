@@ -8,6 +8,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public final class FeedReaderContract {
+
     public FeedReaderContract(){}
     public static class FeedEntry implements BaseColumns{
         public static final String TABLE_AUTORISATION="Autorisation";
@@ -32,7 +33,7 @@ public final class FeedReaderContract {
         public static final String COLUMN_PROFIL_PSEUDO="Pseudo";
         public static final String COLUMN_PROFIL_PHOTO="Photo";
         public static final String COLUMN_PROFIL_NOM="Nom";
-        public static final String COLUMN_PROFIL_PRENOM="Prénom";
+        public static final String COLUMN_PROFIL_PRENOM="Prenom";
         public static final String COLUMN_PROFIL_AGE="Age";
         public static final String COLUMN_PROFIL_ADRESSE="Adresse";
         public static final String TABLE_PREFERENCES="Preferences";
@@ -68,7 +69,7 @@ public final class FeedReaderContract {
             FeedEntry.COLUMN_PROFIL_PRENOM + " VARCHAR (20) NOT NULL," +
             FeedEntry.COLUMN_PROFIL_AGE + " VARCHAR (20) NOT NULL," +
             FeedEntry.COLUMN_PROFIL_ADRESSE +" VARCHAR (100)," +
-            FeedEntry.COLUMN_PROFIL_PHOTO +" LONGBLOB" +")";
+            FeedEntry.COLUMN_PROFIL_PHOTO +" BLOB DEFAULT (NULL)" +")";
     public static final String SQL_CREATE_ENTRIES3="CREATE TABLE " +  FeedEntry.TABLE_ITEM + "(" +
             FeedEntry.COLUMN_ITEM_ID + " varchar (20) PRIMARY KEY NOT NULL," +
             FeedEntry.COLUMN_ITEM_NOM + " varchar (20) NOT NULL,"+
@@ -107,12 +108,12 @@ public final class FeedReaderContract {
             "('User4', 'user4'),\n" +
             "('User5', 'user5');";
     public static final String Create_profil ="INSERT INTO " + FeedEntry.TABLE_PROFIL+ "\n"+
-            "VALUES" +
-            "('User1', 'Avril', 'Lavigne', '20', 'Bastogne', NULL),\n" +
-            "('User2', 'Bruce', 'Willis', '68', 'Bois de boulogne', NULL),\n" +
-            "('User3', 'Johnny', 'Cadillac', '35', 'Charleroi', NULL),\n" +
-            "('User4', 'Anthony', 'Delperdange', '20', 'Liège', NULL),\n" +
-            "('User5', 'Ingrid', 'Bettencourt', '20', 'On cherche', NULL);";
+            "(Pseudo, Prenom, Nom, Age, Adresse) VALUES " +
+            "('User1', 'Avril', 'Lavigne', '20', 'Bastogne'),\n" +
+            "('User2', 'Bruce', 'Willis', '68', 'Bois de boulogne'),\n" +
+            "('User3', 'Johnny', 'Cadillac', '35', 'Charleroi'),\n" +
+            "('User4', 'Anthony', 'Delperdange', '20', 'Liège'),\n" +
+            "('User5', 'Ingrid', 'Bettencourt', '20', 'On cherche');";
     public static final String Create_wishlist = "INSERT INTO " + FeedEntry.TABLE_WL+ "\n"+
             "VALUES" +
             "('User1', 'Noel', 'Idee de cadeau pour noel soyez pas radins sinon je change de nom de famille', 1, '1'),\n" +

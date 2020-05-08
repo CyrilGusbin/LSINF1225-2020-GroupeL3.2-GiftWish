@@ -22,7 +22,7 @@ public class wishlist_intermediate extends AppCompatActivity {
         Intent intent2=getIntent();
         final String pseudo_bis = intent2.getStringExtra(EXTRA_MESSAGE);
         TextView textView = findViewById(R.id.wl_user);
-        textView.setText("Wishlists de "+pseudo_bis);
+        textView.setText("WishLists de "+pseudo_bis);
         final String msg =intent2.getStringExtra(Create_wislist.EXTRA_MESSAGE2);
         TextView reussite = findViewById(R.id.wl_created);
         reussite.setText(msg);

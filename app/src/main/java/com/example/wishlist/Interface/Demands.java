@@ -56,5 +56,6 @@ public class Demands extends AppCompatActivity {
         intent.putExtra(EXTRA_MESSAGE, pseudo);
         intent.putExtra(EXTRA_MESSAGE3, "demande d'ami acceptée");
         startActivity(intent);
+        finish();
     }
 }

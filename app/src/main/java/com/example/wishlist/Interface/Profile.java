@@ -4,8 +4,11 @@ package com.example.wishlist.Interface;
 ;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -17,47 +20,76 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Button;
 
+import com.example.wishlist.Backend.FeedReaderDbHelper;
+import com.example.wishlist.Backend.ImageToBlob;
+import com.example.wishlist.Backend.USER;
 import com.example.wishlist.DAO.UserDAO;
 import com.example.wishlist.R;
-
-import java.io.File;
 
 import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
 public class Profile extends AppCompatActivity {
 
+    private USER user;
     private static final int REQUEST_GET_SINGLE_FILE = 1 ;
+    private static final int IMAGE_CAPTURED = 2;
     private Button play;
+    private String photoPath;
+    private Bitmap img;
     UserDAO userDAO;
+    FeedReaderDbHelper db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
+
         final int REQUEST_IMAGE_CAPTURE = 1;
 
         //Affiche le pseudo de l'user connecté.
         Intent intent = getIntent();
-        String message = intent.getStringExtra(EXTRA_MESSAGE);
+        //String message = intent.getStringExtra(EXTRA_MESSAGE);
         TextView textView = findViewById(R.id.pseudo_user);
-        textView.setText(message);
+        //textView.setText(message);
+        final String pseudo_bis = intent.getStringExtra(EXTRA_MESSAGE);
+        textView.setText(pseudo_bis);
+        //ImageView photo = findViewById(R.id.photo_user);
+
+        //this.play = findViewById(R.id.edit_photo);
+        //play.setOnClickListener(new View.OnClickListener() {
+           // @Override
+            //public void onClick(View view) {
+                //if(ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.READ_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED){
+                    //requestPermissions(new String[] {
+                            //Manifest.permission.READ_EXTERNAL_STORAGE
+                    //}, 2);
+                //}else {
+                    //Intent pick = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                    //startActivityForResult(pick, 1);
+                //}
+            //}
+        //});
+
+
 
         //Ouvre notre galerie photo, nous permettant de choisir une photo.
         //TODO : Enegistrer l'image dans la base de donnée
-        this.play = findViewById(R.id.edit_photo);
-        play.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent otherActivity = new Intent(getApplicationContext(), Profile.class);
-                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-                intent.addCategory(Intent.CATEGORY_OPENABLE);
-                intent.setType("image/*");
-                startActivityForResult(Intent.createChooser(intent, "Select Picture"),REQUEST_GET_SINGLE_FILE);
-                //Bitmap profilePicture = ;
-                //userDAO.updateProfilePicture(profilePicture);
-            }
-        });
+        //this.play = findViewById(R.id.edit_photo);
+        //play.setOnClickListener(new View.OnClickListener() {
+            //@Override
+            //public void onClick(View view) {
+                //Cursor cursor = null;
+                //Intent otherActivity = new Intent(getApplicationContext(), Profile.class);
+                //Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+                //intent.addCategory(Intent.CATEGORY_OPENABLE);
+                //intent.setType("image/*");
+                //startActivityForResult(Intent.createChooser(intent, "Select Picture"),REQUEST_GET_SINGLE_FILE);
+                //byte[] profilePicture = cursor.getBlob(0);
+               // userDAO.updateProfilePicture(profilePicture);
+                //startActivity(otherActivity);
+            //}
+        //});
 
                 //Permet à l'utilisateur de modifier son profil.
         this.play = findViewById(R.id.edit_profile);
@@ -88,35 +120,14 @@ public class Profile extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         try {
-            if (resultCode == RESULT_OK) {
-                if (requestCode == REQUEST_GET_SINGLE_FILE) {
-                    Uri selectedImageUri = data.getData();
-                    // Get the path from the Uri
-                    final String path = getPathFromURI(selectedImageUri);
-                    if (path != null) {
-                        File f = new File(path);
-                        selectedImageUri = Uri.fromFile(f);
-                    }
-                    // Set the image in ImageView
-                    ImageView photo = findViewById(R.id.photo_user);
-                    photo.setImageURI(selectedImageUri);
-                    Uri profilePicture = selectedImageUri;
-                }
+            if (resultCode == RESULT_OK && requestCode == REQUEST_GET_SINGLE_FILE) {
+                Uri selected = data.getData();
+                img = ImageToBlob.getBytePhoto(ImageToBlob.getBytes(selected, this));
+                ImageView photo = findViewById(R.id.photo_user);
+                photo.setImageBitmap(img);
             }
         } catch (Exception e) {
             Log.e("FileSelectorActivity", "File select error", e);
         }
-    }
-
-    public String getPathFromURI(Uri contentUri) {
-        String res = null;
-        String[] proj = {MediaStore.Images.Media.DATA};
-        Cursor cursor = getContentResolver().query(contentUri, proj, null, null, null);
-        if (cursor.moveToFirst()) {
-            int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-            res = cursor.getString(column_index);
-        }
-        cursor.close();
-        return res;
     }
 }

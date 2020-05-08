@@ -1,31 +1,71 @@
 package com.example.wishlist.Backend;
 
+import android.content.ContentValues;
+import android.content.Context;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.widget.Toast;
 
 import com.example.wishlist.DAO.UserDAO;
+
+import java.text.BreakIterator;
 
 public class USER {
     public String Pseudo;
     public String MDP;
     UserProfile userprofile;
     public UserDAO dao;
-    private String nom;
-    private String prenom;
+    private String Nom;
+    private String Prenom;
     private String sexe;
-    private byte[] photo;
+    private Bitmap photo = null;
     private String langue;
+    private Context context;
+    private FeedReaderDbHelper db2;
+    private SQLiteDatabase db;
 
 
-    public byte[] getPhoto() {
+    public USER (Context context){
+        this.context = context;
+        this.db2 = new FeedReaderDbHelper(this.context);
+    }
+
+    public void updateProfile(){
+        String req = "SELECT * FROM PROFIL WHERE Pseudo=\""+this.getPseudo()+"\";";
+        this.db = db2.getReadableDatabase();
+
+        Cursor cursor =db.rawQuery(req, null);
+        cursor.moveToFirst();
+        if(!cursor.isAfterLast()){
+            setPseudo(cursor.getString(cursor.getColumnIndex("Pseudo")));
+            setPrenom(cursor.getString(cursor.getColumnIndex("Prenom")));
+            setNom(cursor.getString(cursor.getColumnIndex("Nom")));
+            if(cursor.getBlob(cursor.getColumnIndex("Photo"))!= null) {
+                byte[] picture = cursor.getBlob(cursor.getColumnIndex("Photo"));
+                setPhoto(ImageToBlob.getBytePhoto(picture));
+            }
+            //System.out.println("***** ERREUR *****");
+        } else{
+            //Give a Toast error (not yet register for example)
+            Toast.makeText(this.context, "text to display", Toast.LENGTH_SHORT).show();
+        }
+        cursor.close();
+    }
+
+    public Bitmap getPhoto() {
         return this.photo;
     }
 
-    public void setPhoto(byte[] photo) {
+    private void setPhoto(Bitmap Photo){
         this.photo = photo;
     }
 
+    public void updatePhoto(Bitmap photo) {
+    }
+
     public String getNom(){
-        return this.nom;
+        return this.Nom;
     }
 
     public void setPseudo(String pseudo){
@@ -45,15 +85,15 @@ public class USER {
     }
 
     public void setNom(String nom){
-        this.nom=nom;
+        this.Nom=nom;
     }
 
     public String getPrenom(){
-        return this.prenom;
+        return this.Prenom;
     }
 
     public void setPrenom(String prenom){
-        this.prenom=prenom;
+        this.Prenom=prenom;
     }
 
 

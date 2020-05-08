@@ -33,7 +33,7 @@ public class Menu extends AppCompatActivity {
         Intent intent = getIntent();
         final String pseudo_bis = intent.getStringExtra(EXTRA_MESSAGE);
         TextView textView = findViewById(R.id.pseudo_user);
-        textView.setText("Bienvenue, "+pseudo_bis);
+        textView.setText("Bienvenue, "+ pseudo_bis);
 
         //Lorsque  l'on clique sur le bouton "Mes WishLists", l'application nous déplace vers l'interface "Mes WishLists".
         this.play = findViewById(R.id.wishlist);
