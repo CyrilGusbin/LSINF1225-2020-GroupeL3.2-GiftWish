@@ -436,7 +436,6 @@ public class UserDAO {
             ind+=1;
         }
         cursor.close();
-        db.close();
         return Liste;
     }
     public void connection_all_other_users(String pseudo){
