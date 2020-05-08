@@ -11,13 +11,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Interface.friend_item_creation"></activity>
+        <activity android:name=".Interface.inalterable_wishlist"></activity>
+        <activity android:name=".Interface.friend_item_creation" />
         <activity android:name=".Interface.WishesFriend" />
         <activity android:name=".Backend.MyAdapterWishesFriend" />
         <activity android:name=".Interface.alterable_wishlist" />
         <activity android:name=".Interface.friend_wishlists" />
         <activity android:name=".Interface.Friend_Profile" />
-        <activity android:name=".Interface.Preferences"></activity>
+        <activity android:name=".Interface.Preferences" />
         <activity android:name=".Interface.Friend_Profile" />
         <activity android:name=".Interface.Demands" />
         <activity android:name=".Interface.friends_intermediate" />

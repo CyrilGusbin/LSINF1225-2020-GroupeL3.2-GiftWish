@@ -21,6 +21,7 @@ public class friend_wishlists extends AppCompatActivity {
     public static final String EXTRA_MESSAGE2 ="" ;
     public static final String EXTRA_MESSAGE3 = "";
     public static final String EXTRA_MESSAGE4 ="" ;
+    public static final String EXTRA_MESSAGE5 ="" ;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
@@ -56,15 +57,19 @@ public class friend_wishlists extends AppCompatActivity {
         TextView nwl= findViewById(R.id.row_friends_wl);
         String nwl_bis= nwl.getText().toString();
         String idwl= userDao.obtain_idwl(friend, nwl_bis);
+        Log.e(user, idwl);
         boolean ret=userDao.authorized(user, idwl);
         boolean ret2=userDao.modifiable_wl(friend, idwl);
         Log.e(nwl_bis,idwl);
         Intent intent2 = new Intent();
         if(ret && ret2){
             intent2= new Intent(this, alterable_wishlist.class);
+            intent2.putExtra(EXTRA_MESSAGE5, "true");
         }
         else{
-            intent2= new Intent(this, Menu.class);
+            intent2 =new Intent(this, WishesFriend.class);
+            intent2.putExtra(EXTRA_MESSAGE5, "false");
+            startActivity(intent2);
         }
         intent2.putExtra(EXTRA_MESSAGE4, user);
         intent2.putExtra(EXTRA_MESSAGE2, friend);

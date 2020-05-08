@@ -146,6 +146,7 @@ public final class FeedReaderContract {
     public static final String Create_autorisation = "INSERT INTO "+ FeedEntry.TABLE_AUTORISATION + "\n" +
             "VALUES"+
             "('User2', '1', '1'), \n " +
+            "('User2', '2', '1'), \n " +
             "('User3', '0', '1'), \n " +
             "('User3', '2', '1');";
 }

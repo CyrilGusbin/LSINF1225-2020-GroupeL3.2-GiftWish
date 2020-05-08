@@ -215,7 +215,6 @@ public class UserDAO {
         String selection = FeedReaderContract.FeedEntry.COLUMN_ITEM_ID + " = ?";
         String[] selectionArgs={iid};
         int deletedRows = db.delete(FeedReaderContract.FeedEntry.TABLE_ITEM, selection, selectionArgs);
-        db.close();
 
     }
     public void delete_wl(String idwl){
@@ -436,7 +435,6 @@ public class UserDAO {
             ind+=1;
         }
         cursor.close();
-        db.close();
         return Liste;
     }
     public void connection_all_other_users(String pseudo){
@@ -451,7 +449,6 @@ public class UserDAO {
             values.put(FeedReaderContract.FeedEntry.COLUMN_FRIEND_REQUEST2, "0");
             db.insertWithOnConflict(FeedReaderContract.FeedEntry.TABLE_FRIEND, null, values, SQLiteDatabase.CONFLICT_IGNORE);
         }
-        db.close();
 
     }
     public String[] get_demands(String pseudo){
@@ -545,8 +542,7 @@ public class UserDAO {
     }
     public boolean authorized(String pseudo, String id){
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        String[] projection = {
-                FeedReaderContract.FeedEntry.COLUMN_AUTORISATION_EDIT
+        String[] projection = {FeedReaderContract.FeedEntry.COLUMN_AUTORISATION_EDIT
         };
         String selection = FeedReaderContract.FeedEntry.COLUMN_AUTORISATION_PSEUDO+ " = ? AND " + FeedReaderContract.FeedEntry.COLUMN_AUTORISATION_IDWL+ " = ?";
         String[] selectionArgs = {pseudo, id};
@@ -562,12 +558,10 @@ public class UserDAO {
         cursor.moveToFirst();
         if(cursor.getInt(0)==1){
             cursor.close();
-            db.close();
             return true;
         }
         else{
             cursor.close();
-            db.close();
             return false;
         }
     }

@@ -17,13 +17,13 @@
     <string name="liste_wishlist"> Ma liste de wishlist</string>
 
     <string-array name="taille_vêtement">
-    <item>XS</item>
-    <item>S</item>
-    <item>M</item>
-    <item>L</item>
-    <item>XL</item>
-    <item>XXL</item>
-    <item>XXXL</item>
+        <item>XS</item>
+        <item>S</item>
+        <item>M</item>
+        <item>L</item>
+        <item>XL</item>
+        <item>XXL</item>
+        <item>XXXL</item>
     </string-array>
 
     <string-array name="couleur">
