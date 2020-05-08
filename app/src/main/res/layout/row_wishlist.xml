@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/gradient"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".Interface.WishLists">
+    tools:context="be.uclouvain.lsinf1225.groupel32.wishlist.Interface.WishLists">
 
     <TextView
         android:id="@+id/token_recycler"

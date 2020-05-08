@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/gradient"
     tools:showIn="@layout/activity_wish_lists"
-    tools:context=".Interface.Friends">
+    tools:context="be.uclouvain.lsinf1225.groupel32.wishlist.Interface.Friends">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/my_recycler_view3"

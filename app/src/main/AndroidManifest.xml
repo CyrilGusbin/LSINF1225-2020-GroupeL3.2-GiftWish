@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.wishlist">
+    package="be.uclouvain.lsinf1225.groupel32.wishlist">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
@@ -11,55 +11,55 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Interface.Demands"></activity>
-        <activity android:name=".Interface.friends_intermediate" />
+        <activity android:name="be.uclouvain.lsinf1225.groupel32.wishlist.Interface.Demands"></activity>
+        <activity android:name="be.uclouvain.lsinf1225.groupel32.wishlist.Interface.friends_intermediate" />
         <activity
-            android:name=".Interface.item_creation"
+            android:name="be.uclouvain.lsinf1225.groupel32.wishlist.Interface.item_creation"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Interface.wishes_intermediate"
+            android:name="be.uclouvain.lsinf1225.groupel32.wishlist.Interface.wishes_intermediate"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Interface.Create_wislist"
+            android:name="be.uclouvain.lsinf1225.groupel32.wishlist.Interface.Create_wislist"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Backend.wishlist_intermediate"
+            android:name="be.uclouvain.lsinf1225.groupel32.wishlist.Backend.wishlist_intermediate"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Interface.Wishes"
+            android:name="be.uclouvain.lsinf1225.groupel32.wishlist.Interface.Wishes"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Interface.DeleteAccount"
+            android:name="be.uclouvain.lsinf1225.groupel32.wishlist.Interface.DeleteAccount"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Backend.MyAdapter"
+            android:name="be.uclouvain.lsinf1225.groupel32.wishlist.Backend.MyAdapter"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Interface.Register_Next"
+            android:name="be.uclouvain.lsinf1225.groupel32.wishlist.Interface.Register_Next"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Interface.EditProfile"
+            android:name="be.uclouvain.lsinf1225.groupel32.wishlist.Interface.EditProfile"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Interface.Produits"
+            android:name="be.uclouvain.lsinf1225.groupel32.wishlist.Interface.Produits"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Interface.WishLists"
+            android:name="be.uclouvain.lsinf1225.groupel32.wishlist.Interface.WishLists"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Interface.Friends"
+            android:name="be.uclouvain.lsinf1225.groupel32.wishlist.Interface.Friends"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Interface.Profile"
+            android:name="be.uclouvain.lsinf1225.groupel32.wishlist.Interface.Profile"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Interface.Register"
+            android:name="be.uclouvain.lsinf1225.groupel32.wishlist.Interface.Register"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Interface.Menu"
+            android:name="be.uclouvain.lsinf1225.groupel32.wishlist.Interface.Menu"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Interface.MainActivity"
+            android:name="be.uclouvain.lsinf1225.groupel32.wishlist.Interface.MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

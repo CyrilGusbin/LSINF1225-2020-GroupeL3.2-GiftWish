@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient"
-    tools:context=".Backend.wishlist_intermediate">
+    tools:context="be.uclouvain.lsinf1225.groupel32.wishlist.Backend.wishlist_intermediate">
 
     <Button
         android:id="@+id/button"

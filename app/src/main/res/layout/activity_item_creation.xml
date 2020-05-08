@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient"
-    tools:context=".Interface.item_creation">
+    tools:context="be.uclouvain.lsinf1225.groupel32.wishlist.Interface.item_creation">
 
     <TextView
         android:id="@+id/beta_text"

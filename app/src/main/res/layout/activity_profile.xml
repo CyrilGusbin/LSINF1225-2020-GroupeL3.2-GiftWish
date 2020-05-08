@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient"
-    tools:context=".Interface.Profile">
+    tools:context="be.uclouvain.lsinf1225.groupel32.wishlist.Interface.Profile">
 
     <TextView
         android:id="@+id/textView2"
