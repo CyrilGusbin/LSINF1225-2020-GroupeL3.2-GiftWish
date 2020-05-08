@@ -10,12 +10,13 @@ import android.widget.TextView;
 
 
 import be.uclouvain.lsinf1225.groupel32.wishlist.Backend.wishlist_intermediate;
+import be.uclouvain.lsinf1225.groupel32.wishlist.DAO.UserDAO;
 import be.uclouvain.lsinf1225.groupel32.wishlist.R;
 
 import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
 public class EditProfile extends AppCompatActivity {
-
+    UserDAO userDAO;
     private Button play;
 
     @Override
@@ -24,7 +25,7 @@ public class EditProfile extends AppCompatActivity {
         setContentView(R.layout.activity_edit_profile);
 
         Intent intent = getIntent();
-        String message = intent.getStringExtra(EXTRA_MESSAGE);
+        final String message = intent.getStringExtra(EXTRA_MESSAGE);
         TextView textView = findViewById(R.id.loadPseudo);
         textView.setText("Votre Pseudo actuel : "+ message);
 
@@ -34,6 +35,7 @@ public class EditProfile extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent otherActivity = new Intent(getApplicationContext(), Preferences.class);
+                otherActivity.putExtra(EXTRA_MESSAGE, message);
                 startActivity(otherActivity);
             }
         });

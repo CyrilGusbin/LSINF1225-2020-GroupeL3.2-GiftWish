@@ -672,7 +672,23 @@ public class UserDAO {
         cursor.close();
         return Liste;
     }
+
+    public void add_preferences_db(String pseudo, String taille, String couleur, String centrei){
+        // Gets the data repository in write mode
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+// Create a new map of values, where column names are the keys
+        ContentValues values = new ContentValues();
+        values.put(FeedReaderContract.FeedEntry.COLUMN_PREFERENCES_PSEUDO, pseudo);
+        values.put(FeedReaderContract.FeedEntry.COLUMN_PREFERENCES_TAILLE_H, taille);
+        values.put(FeedReaderContract.FeedEntry.COLUMN_PREFERENCES_COULEUR, couleur);
+        values.put(FeedReaderContract.FeedEntry.COLUMN_PREFERENCES_CENTREI, centrei);
+
+// Insert the new row, returning the primary key value of the new row
+        long newRowId = db.insert(FeedReaderContract.FeedEntry.TABLE_PREFERENCES, null, values);
+    }
 }
+
 
 
 
