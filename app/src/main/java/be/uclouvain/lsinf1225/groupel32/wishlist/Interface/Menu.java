@@ -50,9 +50,10 @@ public class Menu extends AppCompatActivity {
 
         //Lorsque l'on clique sur le bouton "Produits", l'application nous déplace vers l'interface "Produits".
         //TODO : RENDRE CETTE PARTIE FONCTIONNELLE ET STABLE.
-        this.play = findViewById(R.id.produits);
+        this.play = findViewById(R.id.remerciement);
 
         play.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
                 Intent otherActivity = new Intent(getApplicationContext(), Produits.class);
@@ -98,4 +99,4 @@ public class Menu extends AppCompatActivity {
             }
         });
     }
-};
+}

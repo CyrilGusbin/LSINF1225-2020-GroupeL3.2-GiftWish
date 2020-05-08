@@ -24,13 +24,13 @@
         app:layout_constraintVertical_bias="0.246" />
 
     <Button
-        android:id="@+id/produits"
+        android:id="@+id/remerciement"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:width="@android:dimen/thumbnail_width"
         android:background="@drawable/circle_button"
         android:backgroundTint="@color/colorAccent"
-        android:text="WishLists de mes amis"
+        android:text=""
         android:textColor="@color/Blanc"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

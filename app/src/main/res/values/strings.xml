@@ -15,6 +15,7 @@
     <string name="warning_message">Êtes-vous sûr de vouloir supprimer votre compte ? Cette action est irréversible et entrainera la suppression immédiate de toutes vos données.</string>
     <string name="ajout_wishlist"> Créer wishlist</string>
     <string name="liste_wishlist"> Ma liste de wishlist</string>
+    <string name="remerciements">Merci à toute l\'équipe LINFO1225 L3.2 pour ce dur travail et toute cette implication sérieuse dans ce projet ! </string>
 
     <string-array name="taille_vêtement">
         <item>XS</item>
