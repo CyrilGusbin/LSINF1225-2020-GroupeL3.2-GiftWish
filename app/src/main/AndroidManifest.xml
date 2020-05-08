@@ -17,6 +17,8 @@
         <activity android:name=".Interface.alterable_wishlist" />
         <activity android:name=".Interface.friend_wishlists" />
         <activity android:name=".Interface.Friend_Profile" />
+        <activity android:name=".Interface.Preferences"></activity>
+        <activity android:name=".Interface.Friend_Profile" />
         <activity android:name=".Interface.Demands" />
         <activity android:name=".Interface.friends_intermediate" />
         <activity
