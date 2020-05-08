@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
 
 import be.uclouvain.lsinf1225.groupel32.wishlist.Backend.MyAdapterFriend;
 import be.uclouvain.lsinf1225.groupel32.wishlist.DAO.UserDAO;
@@ -16,6 +18,7 @@ import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
 
 public class Friends extends AppCompatActivity {
+    public static final String EXTRA_MESSAGE2 = "";
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
@@ -44,5 +47,15 @@ public class Friends extends AppCompatActivity {
         mAdapter = new MyAdapterFriend(myDataset);
         recyclerView.setAdapter(mAdapter);
 
+    }
+    public void open_friend(View view){
+        Intent intent=getIntent();
+        String pseudo = intent.getStringExtra(EXTRA_MESSAGE);
+        Intent intent2= new Intent(this, Friend_Profile.class);
+        intent2.putExtra(EXTRA_MESSAGE, pseudo);
+        TextView friend= findViewById(R.id.row_friends);
+        String friend_pseudo= friend.getText().toString();
+        intent2.putExtra(EXTRA_MESSAGE2, friend_pseudo);
+        startActivity(intent2);
     }
 }

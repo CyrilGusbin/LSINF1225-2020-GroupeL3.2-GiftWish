@@ -25,7 +25,7 @@ import static be.uclouvain.lsinf1225.groupel32.wishlist.Backend.FeedReaderContra
 import static be.uclouvain.lsinf1225.groupel32.wishlist.Backend.FeedReaderContract.SQL_DELETE_ENTRIES6;
 import static be.uclouvain.lsinf1225.groupel32.wishlist.Backend.FeedReaderContract.SQL_DELETE_ENTRIES7;
 public class FeedReaderDbHelper extends SQLiteOpenHelper {
-    public static final int DATABASE_VERSION = 22;
+    public static final int DATABASE_VERSION = 23;
     public static final String DATABASE_NAME = "FeedReader.db";
     private SQLiteDatabase db;
     public FeedReaderDbHelper(Context context) {

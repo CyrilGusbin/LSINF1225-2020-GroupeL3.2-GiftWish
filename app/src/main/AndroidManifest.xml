@@ -11,55 +11,56 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="be.uclouvain.lsinf1225.groupel32.wishlist.Interface.Demands"></activity>
-        <activity android:name="be.uclouvain.lsinf1225.groupel32.wishlist.Interface.friends_intermediate" />
+        <activity android:name=".Interface.Friend_Profile"></activity>
+        <activity android:name=".Interface.Demands" />
+        <activity android:name=".Interface.friends_intermediate" />
         <activity
-            android:name="be.uclouvain.lsinf1225.groupel32.wishlist.Interface.item_creation"
+            android:name=".Interface.item_creation"
             android:screenOrientation="portrait" />
         <activity
-            android:name="be.uclouvain.lsinf1225.groupel32.wishlist.Interface.wishes_intermediate"
+            android:name=".Interface.wishes_intermediate"
             android:screenOrientation="portrait" />
         <activity
-            android:name="be.uclouvain.lsinf1225.groupel32.wishlist.Interface.Create_wislist"
+            android:name=".Interface.Create_wislist"
             android:screenOrientation="portrait" />
         <activity
-            android:name="be.uclouvain.lsinf1225.groupel32.wishlist.Backend.wishlist_intermediate"
+            android:name=".Backend.wishlist_intermediate"
             android:screenOrientation="portrait" />
         <activity
-            android:name="be.uclouvain.lsinf1225.groupel32.wishlist.Interface.Wishes"
+            android:name=".Interface.Wishes"
             android:screenOrientation="portrait" />
         <activity
-            android:name="be.uclouvain.lsinf1225.groupel32.wishlist.Interface.DeleteAccount"
+            android:name=".Interface.DeleteAccount"
             android:screenOrientation="portrait" />
         <activity
-            android:name="be.uclouvain.lsinf1225.groupel32.wishlist.Backend.MyAdapter"
+            android:name=".Backend.MyAdapter"
             android:screenOrientation="portrait" />
         <activity
-            android:name="be.uclouvain.lsinf1225.groupel32.wishlist.Interface.Register_Next"
+            android:name=".Interface.Register_Next"
             android:screenOrientation="portrait" />
         <activity
-            android:name="be.uclouvain.lsinf1225.groupel32.wishlist.Interface.EditProfile"
+            android:name=".Interface.EditProfile"
             android:screenOrientation="portrait" />
         <activity
-            android:name="be.uclouvain.lsinf1225.groupel32.wishlist.Interface.Produits"
+            android:name=".Interface.Produits"
             android:screenOrientation="portrait" />
         <activity
-            android:name="be.uclouvain.lsinf1225.groupel32.wishlist.Interface.WishLists"
+            android:name=".Interface.WishLists"
             android:screenOrientation="portrait" />
         <activity
-            android:name="be.uclouvain.lsinf1225.groupel32.wishlist.Interface.Friends"
+            android:name=".Interface.Friends"
             android:screenOrientation="portrait" />
         <activity
-            android:name="be.uclouvain.lsinf1225.groupel32.wishlist.Interface.Profile"
+            android:name=".Interface.Profile"
             android:screenOrientation="portrait" />
         <activity
-            android:name="be.uclouvain.lsinf1225.groupel32.wishlist.Interface.Register"
+            android:name=".Interface.Register"
             android:screenOrientation="portrait" />
         <activity
-            android:name="be.uclouvain.lsinf1225.groupel32.wishlist.Interface.Menu"
+            android:name=".Interface.Menu"
             android:screenOrientation="portrait" />
         <activity
-            android:name="be.uclouvain.lsinf1225.groupel32.wishlist.Interface.MainActivity"
+            android:name=".Interface.MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
