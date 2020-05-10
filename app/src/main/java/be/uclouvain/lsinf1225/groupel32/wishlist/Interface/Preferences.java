@@ -17,6 +17,7 @@ import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
 public class Preferences extends AppCompatActivity {
     UserDAO userDAO;
+    private final AppCompatActivity activity = Preferences.this;
     private Button play;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +58,7 @@ public class Preferences extends AppCompatActivity {
                 Intent otherActivity = new Intent(getApplicationContext(), Profile.class);
                 String couleur = spinner2.getSelectedItem().toString();
                 String taille = spinner.getSelectedItem().toString();
+                userDAO= new UserDAO(activity);
                 userDAO.add_preferences_db(pseudo,taille,couleur,centreinteret);
                 //TODO : Sauvegarder les données entrées dans la bd
                 //NB : Les infos qui déroulent dans le spinner sont dans String.XML
