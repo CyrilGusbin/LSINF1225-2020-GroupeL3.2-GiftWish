@@ -36,6 +36,7 @@ public class Friend_Profile extends AppCompatActivity {
         intent2.putExtra(EXTRA_MESSAGE2,"ami supprimé");
         intent.putExtra(EXTRA_MESSAGE, my_pseudo);
         startActivity(intent2);
+        finish();
     }
     public void open_friend_wishlist(View view){
         userDao= new UserDAO(activity);

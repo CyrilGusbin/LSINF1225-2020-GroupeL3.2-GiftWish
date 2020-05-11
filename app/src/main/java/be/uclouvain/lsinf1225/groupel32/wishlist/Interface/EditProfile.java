@@ -37,6 +37,7 @@ public class EditProfile extends AppCompatActivity {
                 Intent otherActivity = new Intent(getApplicationContext(), Preferences.class);
                 otherActivity.putExtra(EXTRA_MESSAGE, message);
                 startActivity(otherActivity);
+                finish();
             }
         });
 
