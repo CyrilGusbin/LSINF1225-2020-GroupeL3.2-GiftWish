@@ -47,6 +47,7 @@ public class Friend_Profile extends AppCompatActivity {
         intent2.putExtra(EXTRA_MESSAGE, my_pseudo);
         intent2.putExtra(EXTRA_MESSAGE2, pseudo_friend);
         startActivity(intent2);
+        finish();
     }
 
 }

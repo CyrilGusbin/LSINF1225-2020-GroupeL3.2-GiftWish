@@ -58,11 +58,11 @@ public class friend_wishlists extends AppCompatActivity {
         String nwl_bis= nwl.getText().toString();
         String idwl= userDao.obtain_idwl(friend, nwl_bis);
         Log.e(user, idwl);
-        boolean ret=userDao.authorized(user, idwl);
+        //boolean ret=userDao.authorized(user, idwl);
         boolean ret2=userDao.modifiable_wl(friend, idwl);
         Log.e(nwl_bis,idwl);
         Intent intent2 = new Intent();
-        if(ret && ret2){
+        if(ret2){
             intent2= new Intent(this, alterable_wishlist.class);
             intent2.putExtra(EXTRA_MESSAGE5, "true");
         }

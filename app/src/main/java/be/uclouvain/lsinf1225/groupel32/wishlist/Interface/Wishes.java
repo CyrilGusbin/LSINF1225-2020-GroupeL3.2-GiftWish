@@ -69,6 +69,7 @@ public class Wishes extends AppCompatActivity {
         Log.e(item_info[2], item_info[3]);
        intent2.putExtra(EXTRA_MESSAGE, id);
        startActivity(intent2);
+       finish();
     }
 }
 
