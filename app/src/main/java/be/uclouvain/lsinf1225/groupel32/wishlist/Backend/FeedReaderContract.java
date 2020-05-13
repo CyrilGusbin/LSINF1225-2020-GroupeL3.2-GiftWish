@@ -127,8 +127,8 @@ public final class FeedReaderContract {
             "('User3', 'vêtements', 'Contribuez à ma street cred les loosers', 1, '4');";
     public static final String Create_items= "INSERT INTO " + FeedEntry.TABLE_ITEM+ "\n"+
             "VALUES" +
-            "('1', 'velo', 'bmx de feu', '300', '0', '1'),\n" +
-            "('2', 'ps4', 'en attendant la ps5', '200', '1', '1'),\n" +
+            "('1', 'velo', 'bmx de feu', '300', '1', '1'),\n" +
+            "('2', 'ps4', 'en attendant la ps5', '200', '0', '1'),\n" +
             "('3', 'chaussures', 'jordans', '150', '0', '1'),\n" +
             "('4', 'Aventador', 'Pour rouler sur Hollywood bld', '1 000 000', '0', '2');";
 

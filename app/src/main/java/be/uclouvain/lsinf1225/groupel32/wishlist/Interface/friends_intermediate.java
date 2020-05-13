@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import be.uclouvain.lsinf1225.groupel32.wishlist.Backend.FeedReaderDbHelper;
 import be.uclouvain.lsinf1225.groupel32.wishlist.DAO.UserDAO;
 import be.uclouvain.lsinf1225.groupel32.wishlist.R;
 

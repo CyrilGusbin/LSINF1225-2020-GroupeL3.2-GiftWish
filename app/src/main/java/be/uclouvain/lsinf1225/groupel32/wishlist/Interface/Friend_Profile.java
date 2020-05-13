@@ -34,7 +34,7 @@ public class Friend_Profile extends AppCompatActivity {
         userDao.delete_friend(my_pseudo, pseudo_friend);
         Intent intent2=new Intent(this, friends_intermediate.class);
         intent2.putExtra(EXTRA_MESSAGE2,"ami supprimé");
-        intent.putExtra(EXTRA_MESSAGE, my_pseudo);
+        intent2.putExtra(EXTRA_MESSAGE, my_pseudo);
         startActivity(intent2);
         finish();
     }
