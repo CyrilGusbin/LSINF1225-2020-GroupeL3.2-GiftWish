@@ -25,7 +25,8 @@ public class wishes_intermediate extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wishes_intermediate);
         Intent intent= getIntent();
-        String nwl= intent.getStringExtra(WishLists.EXTRA_MESSAGE2);
+        String nwl= intent.getStringExtra(WishLists.NWL);
+        Log.e(nwl, nwl);
         TextView nomWL = findViewById(R.id.nwl);
         nomWL.setText(nwl);
         Intent intent2=getIntent();

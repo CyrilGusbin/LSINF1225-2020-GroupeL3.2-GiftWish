@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -17,7 +18,7 @@ import be.uclouvain.lsinf1225.groupel32.wishlist.R;
 import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
 public class WishLists extends AppCompatActivity {
-    public static final String EXTRA_MESSAGE2 = "";
+    public static final String NWL = "";
     public static final String EXTRA_MESSAGE3 = "";
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
@@ -56,7 +57,7 @@ public class WishLists extends AppCompatActivity {
         final String pseudo_bis = intent.getStringExtra(EXTRA_MESSAGE);
         String id= userDao.obtain_idwl(pseudo_bis, nomWL);
         intent2.putExtra(EXTRA_MESSAGE, id);
-        intent2.putExtra(EXTRA_MESSAGE2,nomWL);
+        intent2.putExtra(NWL,nomWL);
         intent2.putExtra(EXTRA_MESSAGE3, pseudo_bis);
         startActivity(intent2);
         finish();
